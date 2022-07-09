@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+
+<body>
+    <h1>This is users page</h1>
+    <ul th:each="u : ${users}">
+        <li>
+            Id = <span th:text="${u.getId()}"></span>
+            <br>
+            Name = <span th:text="${u.getName()}"></span>
+            <br>
+            Email = <span th:text="${u.getEmail()}"></span>
+        </li>
+    </ul>
+</body>
+
+</html>
