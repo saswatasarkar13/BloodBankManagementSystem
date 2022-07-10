@@ -23,7 +23,6 @@ public class UserContoller {
         List<User> list = userService.getAllUsers();
 
         model.addAttribute("users", list);
-       // model.addAttribute("name", "saswata");
 
         return "/users";
     }
