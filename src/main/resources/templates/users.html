@@ -10,6 +10,8 @@
 
 <body>
     <h1>This is users page</h1>
+    <p th:text="${ name }"></p>
+
     <ul th:each="u : ${users}">
         <li>
             Id = <span th:text="${u.getId()}"></span>

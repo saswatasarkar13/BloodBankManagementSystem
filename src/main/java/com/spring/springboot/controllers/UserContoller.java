@@ -23,14 +23,15 @@ public class UserContoller {
         List<User> list = userService.getAllUsers();
 
         model.addAttribute("users", list);
-;
+        model.addAttribute("name", "saswata");
+
         return "/users";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     @ResponseBody
     public String addUser() {
-        // User obj = new User("test account", "test@gmail.com");
+        // User obj = new User("test account1", "test1@gmail.com");
         // userService.save(obj);
         return "User is added";
     }
