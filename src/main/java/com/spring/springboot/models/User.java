@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.DynamicInsert;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = { "email" }))
@@ -20,16 +21,29 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "contact", nullable = false)
     private String contact;
 
-    @Column(name = "blood_group")
+    @Column(name = "blood_group", nullable = false)
     private String blood_group;
+
+    @Column(name = "dob", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
+
+    @Column(name = "city", nullable = false)
     private String city;
+
+    @Column(name = "state", nullable = false)
     private String state;
 
     @Column(name = "address", nullable = true)

@@ -39,6 +39,6 @@ public class UserContoller {
     public String addUser(User user) {
         this.userService.save(user);
 
-        return "/home";
+        return "redirect:/home";
     }
 }

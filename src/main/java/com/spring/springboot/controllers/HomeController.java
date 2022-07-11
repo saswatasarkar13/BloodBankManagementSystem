@@ -24,7 +24,7 @@ public class HomeController {
         this.helpers = new BloodTable();
     }
 
-    @RequestMapping("/")
+    @RequestMapping(value = { "/", "/home" })
     public String index(Model model) {
         List<BloodAvailable> list = bloodAvailableService.getAll();
 
