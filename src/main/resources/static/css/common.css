@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.heading {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.form_container {
+  flex-grow: 1;
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form_container > form {
+  width: min(50vh, 400px);
+}
+
+.form_container > form > div {
+  margin: 1rem 0;
+}
+
+.blood_list_table_container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.blood_list_table {
+  width: fit-content;
+}
+
+.blood_list_table th {
+  padding: 0.2rem 1rem;
+}
+
+.blood_list_table td {
+  padding: 0;
+  padding: 0.2rem 1rem;
+  font-weight: bold;
+}
+
+.blood_list_table,
+.blood_list_table th,
+.blood_list_table td {
+  border: 1px solid black;
+  border-collapse: separate;
+  text-align: center;
+}
+
+.bg-normal {
+  background-color: #96d4d4;
+}
+
+.bg-red {
+  background-color: rgba(255, 10, 10, 0.6);
+}
+
+.bg-green {
+  background-color: green;
+  color: white;
+}
+
+.bg-yellow {
+  background-color: yellow;
+}

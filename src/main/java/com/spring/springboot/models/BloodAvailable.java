@@ -22,9 +22,10 @@ public class BloodAvailable implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "city", nullable = false)
     private String city;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BloodGroupAvailable> blood_groups;
 
     public BloodAvailable() {

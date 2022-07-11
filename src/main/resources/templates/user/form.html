@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
+</head>
+
+<body>
+    <main class="container">
+        <h1 class="heading">Registration</h1>
+
+        <div class="form_container">
+            <form action="@{/user/add}" method="post" th:object="${user}">
+
+                <div class="form-group">
+                    <label for="Email">Email address</label>
+                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"
+                        placeholder="Enter email" th:field="*{email}" required>
+
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input th:field="*{password}" type="password" class="form-control" id="Password"
+                        placeholder="Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input th:field="*{dob}" type="date" class="form-control" id="dob" placeholder="Date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="blood-group-selectbox">Blood Group:</label>
+                    <select th:field="*{blood_group}" class="form-control" id="blood-group-selectbox" required>
+                        <option th:each="c : ${bloodGroups}" th:value="${c}" th:text="${c}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input th:field="*{contact}" type="tel" class="form-control" id="contact" placeholder="Contact"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input th:field="*{city}" type="text" class="form-control" id="city" placeholder="City" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input th:field="*{state}" type="text" class="form-control" id="state" placeholder="State" required>
+                </div>
+
+                <!-- Optional -->
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input th:field="*{address}" type="text" class="form-control" id="address" placeholder="Address">
+                </div>
+
+                <div class="form-group">
+                    <label for="pincode">Pincode</label>
+                    <input th:field="*{pincode}" type="number" class="form-control" id="pincode" placeholder="Pincode">
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="Check">
+                    <label class="form-check-label" for="Check">Agree to the Terms&amp;Conditions</label>
+                </div>
+
+                <button type="submit" class="btn btn-success d-block mx-auto">Register</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>

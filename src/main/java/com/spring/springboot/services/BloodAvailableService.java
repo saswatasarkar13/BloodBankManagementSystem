@@ -20,9 +20,17 @@ public class BloodAvailableService {
         return list;
     }
 
-    // public List<Object> getAvailableCities(String city) {
-    //     List<Object> obj = this.bloodAvaliableRepository.getAvailableCities();
+    public List<BloodAvailable> getAvailableCities(String city) {
+        List<BloodAvailable> obj = this.bloodAvaliableRepository.getAvailableCities();
 
-    //     return obj;
-    // }
+        return obj;
+    }
+
+    public BloodAvailable save(BloodAvailable obj) {
+        return this.bloodAvaliableRepository.save(obj);
+    }
+
+    public BloodAvailable findByCity(String city) {
+        return this.bloodAvaliableRepository.findByCity(city);
+    }
 }

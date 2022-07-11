@@ -36,7 +36,7 @@ public class User {
     private String address;
 
     @Column(name = "pincode", nullable = true)
-    private String pincode;
+    private Integer pincode;
 
     @Column(name = "is_admin", columnDefinition = "boolean default false")
     private boolean isAdmin;
@@ -49,7 +49,7 @@ public class User {
     }
 
     public User(Long id, String name, String email, String password, String contact, String blood_group, Date dob,
-            String city, String state, String address, String pincode, boolean isActivelyDonating) {
+            String city, String state, String address, Integer pincode, boolean isActivelyDonating) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -144,11 +144,11 @@ public class User {
         this.address = address;
     }
 
-    public String getPincode() {
+    public Integer getPincode() {
         return pincode;
     }
 
-    public void setPincode(String pincode) {
+    public void setPincode(Integer pincode) {
         this.pincode = pincode;
     }
 
