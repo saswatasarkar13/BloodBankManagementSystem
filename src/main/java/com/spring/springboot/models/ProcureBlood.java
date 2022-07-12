@@ -1,7 +1,7 @@
 package com.spring.springboot.models;
 
+import java.io.Serializable;
 import java.util.Date;
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,35 +11,31 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.ManyToAny;
-
 @Entity
-public class ProcureBlood 
-{
+public class ProcureBlood implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    @Column (name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
-    @Column (name = "quantity", nullable = false)
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column (name = "date", nullable = false)
+    @Column(name = "date", nullable = false)
     private Date date;
 
-    @Column (name = "is_donation", columnDefinition = "boolean default false" )
+    @Column(name = "is_donation", columnDefinition = "boolean default false")
     private Boolean isDonation;
 
-    @Column (name = "blood_group", nullable = false)
+    @Column(name = "blood_group", nullable = false)
     private String blood_group;
 
     @ManyToOne
-    @JoinColumn (name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user_id;
 
     public ProcureBlood() {
     }
-
 
     public ProcureBlood(Integer quantity, Date date, Boolean isDonation, String blood_group, User user_id) {
         this.quantity = quantity;
@@ -48,7 +44,6 @@ public class ProcureBlood
         this.blood_group = blood_group;
         this.user_id = user_id;
     }
-
 
     public Long getId() {
         return id;
@@ -97,7 +92,5 @@ public class ProcureBlood
     public void setUser_id(User user_id) {
         this.user_id = user_id;
     }
-
-       
 
 }

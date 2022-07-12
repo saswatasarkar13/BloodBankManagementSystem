@@ -1,5 +1,0 @@
-
-@Repository
-public interface DonationsRepository {
-    
-}

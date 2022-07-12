@@ -16,6 +16,7 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = { "email" }))
@@ -63,10 +64,14 @@ public class User {
     @Column(name = "is_actively_donating", columnDefinition = "boolean default false")
     private boolean isActivelyDonating;
 
-    @OneToMany(mappedBy = "user_id",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List <ProcureBlood> procureBlood;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ProcureBlood> procureBlood;
 
-   
+    @JsonIgnore
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Donation> donations;
+
     public User() {
         // default constructor
     }
@@ -197,6 +202,14 @@ public class User {
 
     public void setProcureBlood(List<ProcureBlood> procureBlood) {
         this.procureBlood = procureBlood;
+    }
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
     }
 
 }
