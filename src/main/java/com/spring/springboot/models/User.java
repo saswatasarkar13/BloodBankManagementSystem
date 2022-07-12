@@ -1,16 +1,21 @@
 package com.spring.springboot.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = { "email" }))
@@ -58,6 +63,10 @@ public class User {
     @Column(name = "is_actively_donating", columnDefinition = "boolean default false")
     private boolean isActivelyDonating;
 
+    @OneToMany(mappedBy = "user_id",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List <ProcureBlood> procureBlood;
+
+   
     public User() {
         // default constructor
     }
@@ -181,4 +190,13 @@ public class User {
     public void setActivelyDonating(boolean isActivelyDonating) {
         this.isActivelyDonating = isActivelyDonating;
     }
+
+    public List<ProcureBlood> getProcureBlood() {
+        return procureBlood;
+    }
+
+    public void setProcureBlood(List<ProcureBlood> procureBlood) {
+        this.procureBlood = procureBlood;
+    }
+
 }
