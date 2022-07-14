@@ -21,9 +21,6 @@ public class DonationCenter {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "city", nullable = false)
-    private String city;
-
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
     private BloodAvailable city_id;
@@ -34,7 +31,6 @@ public class DonationCenter {
 
     public DonationCenter(String name, String city, BloodAvailable city_id) {
         this.name = name;
-        this.city = city;
         this.city_id = city_id;
     }
 
@@ -52,14 +48,6 @@ public class DonationCenter {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public BloodAvailable getCity_id() {
