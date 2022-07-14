@@ -24,6 +24,9 @@ public class ProcureBlood implements Serializable {
     @Column(name = "date", nullable = false)
     private Date date;
 
+    @Column(name = "status", columnDefinition = "varchar(255) default 'pending'")
+    private String status;
+
     @Column(name = "is_donation", columnDefinition = "boolean default false")
     private Boolean isDonation;
 
