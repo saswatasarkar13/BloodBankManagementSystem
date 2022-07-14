@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Blood</title>
+
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
+</head>
+
+<body>
+    <main class="container">
+        <h1 class="heading">Get Blood from your our blood bank</h1>
+
+        <div class="form_container">
+            <form th:action="@{/user/add}" method="post" th:object="${user}">
+
+
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input th:field="*{city}" type="text" class="form-control" id="city" placeholder="City" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="blood-group-selectbox">Blood Group:</label>
+                    <select th:field="*{blood_group}" class="form-control" id="blood-group-selectbox" required>
+                        <option th:each="c : ${bloodGroups}" th:value="${c}" th:text="${c}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">City</label>
+                    <input th:field="*{quantity}" type="number" class="form-control" id="quantity" placeholder="Quantity of Blood" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date of Blood requirement</label>
+                    <input th:field="*{date}" type="date" class="form-control" id="date" placeholder="Date of Blood Requirement" required>
+                </div>
+                
+                
+
+                <!-- Optional -->
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="Check">
+                    <label class="form-check-label" for="Check">Agree to the Terms&amp;Conditions</label>
+                </div>
+
+                <button type="submit" class="btn btn-success d-block mx-auto">Register</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>

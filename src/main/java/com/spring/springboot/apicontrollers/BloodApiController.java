@@ -35,7 +35,7 @@ public class BloodApiController {
     }
 
     @RequestMapping(value = "/group", method = RequestMethod.POST)
-    public BloodGroupAvailable addBloodGroup(@RequestBody Map<String, String> payload) {
+    public String addBloodGroup(@RequestBody Map<String, String> payload) {
 
         try {
             String city = (String) payload.get("city");
@@ -46,10 +46,13 @@ public class BloodApiController {
 
             BloodGroupAvailable obj = new BloodGroupAvailable(blood_group, quantity, ob);
 
-            return bloodGroupAvaliableService.save(obj);
+            BloodGroupAvailable result = bloodGroupAvaliableService.save(obj);
+            if (result!=null)
+                return "Successfull";
+            else
+                return "Unsucessfull";
         } catch (Exception e) {
-            BloodGroupAvailable res = new BloodGroupAvailable();
-            return res;
+            return "Unsucessfull";
         }
     }
 }
