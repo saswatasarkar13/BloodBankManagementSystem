@@ -20,8 +20,8 @@ public class ProcureBloodController {
     public String procureBloodHandler(Model model) {
 
         ProcureBlood obj = new ProcureBlood();
-        model.addAttribute("blood_groups", Constants.BLOOD_GROUPS);
-        model.addAttribute("procure", obj);
+        model.addAttribute("bloodGroups", Constants.BLOOD_GROUPS);
+        model.addAttribute("procure", obj);   
         return "/procure/form";
     }
 
