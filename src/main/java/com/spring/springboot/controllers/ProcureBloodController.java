@@ -19,7 +19,7 @@ public class ProcureBloodController {
     {
         
         ProcureBlood obj = new ProcureBlood();
-        model.addAttribute("blood_groups", Constants.BLOOD_GROUPS);
+        model.addAttribute("bloodGroups", Constants.BLOOD_GROUPS);
         model.addAttribute("procure", obj);   
         return "/procure/form";
     }    
