@@ -36,4 +36,14 @@ public class BloodTable {
 
         return newList;
     }
+
+    // public TreeMap<String, Integer > getBlood(BloodAvailable obj) {
+
+    //     TreeMap<String, Integer > newList = new TreeMap<>();
+
+    //         newList.put(item.getCity(), getBloodQuantityList(item.getBlood_groups()));
+        
+
+    //     return newList;
+    // }
 }
