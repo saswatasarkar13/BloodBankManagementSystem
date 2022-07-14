@@ -29,7 +29,7 @@ public class DonationCenter {
         // default constructor
     }
 
-    public DonationCenter(String name, String city, BloodAvailable city_id) {
+    public DonationCenter(String name, BloodAvailable city_id) {
         this.name = name;
         this.city_id = city_id;
     }

@@ -19,5 +19,10 @@ public class DonationCenterService
         return this.donationCenterRepository.findAll();
     }
 
+    public DonationCenter save(DonationCenter donationCenter)
+    {
+        return this.donationCenterRepository.save(donationCenter);
+    }
+
 
 }
