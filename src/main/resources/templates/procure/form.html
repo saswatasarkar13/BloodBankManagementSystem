@@ -16,12 +16,12 @@
         <h1 class="heading">Get Blood from your our blood bank</h1>
 
         <div class="form_container">
-            <form th:action="@{/user/add}" method="post" th:object="${user}">
+            <form th:action="@{/user/add}" method="post" th:object="${procure}">
 
 
                 <div class="form-group">
                     <label for="city">City</label>
-                    <input th:field="*{city}" type="text" class="form-control" id="city" placeholder="City" required>
+                    <input type="text" class="form-control" id="city" placeholder="City" required>
                 </div>
 
                 <div class="form-group">
