@@ -41,5 +41,53 @@ public class Donations {
         this.blood_group = blood_group;
     }
 
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getBlood_group() {
+        return this.blood_group;
+    }
+
+    public void setBlood_group(String blood_group) {
+        this.blood_group = blood_group;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getBlood_group() {
+        return this.blood_group;
+    }
+
+    public void setBlood_group(String blood_group) {
+        this.blood_group = blood_group;
+    }
     
 }
