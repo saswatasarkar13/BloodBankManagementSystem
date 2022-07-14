@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.springboot.common.Constants;
+import com.spring.springboot.helpers.Encryption;
 import com.spring.springboot.models.User;
 import com.spring.springboot.services.UserService;
 
@@ -17,6 +18,12 @@ public class UserContoller {
 
     @Autowired
     private UserService userService;
+
+    private Encryption encryption;
+
+    UserContoller() {
+        encryption = new Encryption();
+    }
 
     @RequestMapping(value = "/user/form", method = RequestMethod.GET)
     public String userRegister(Model model) {
@@ -37,6 +44,12 @@ public class UserContoller {
 
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
     public String addUser(User user) {
+
+        // hashing the password and storing
+        String plainPassword = user.getPassword();
+        String passwordHash = encryption.getEncryptedPassword(plainPassword);
+        user.setPassword(passwordHash);
+
         this.userService.save(user);
 
         return "redirect:/home";
