@@ -27,7 +27,7 @@ public class ProcureBlood implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
-    @Column(name = "status", columnDefinition = "varchar(255) default 'pending'")
+    @Column(name = "status", columnDefinition = "varchar(255) default 'pending'", nullable = false)
     private String status;
 
     @Column(name = "is_donation", columnDefinition = "boolean default false")
@@ -117,7 +117,5 @@ public class ProcureBlood implements Serializable {
     public void setCity(String city) {
         this.city = city;
     }
-
-    
 
 }

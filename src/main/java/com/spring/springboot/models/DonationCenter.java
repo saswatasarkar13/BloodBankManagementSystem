@@ -1,19 +1,16 @@
 package com.spring.springboot.models;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "donation_center")
 public class DonationCenter {
 
     @Id
@@ -27,18 +24,18 @@ public class DonationCenter {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "donationCenter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Donation> donations;
+    @ManyToOne
+    @JoinColumn(name = "city_id", nullable = false)
+    private BloodAvailable city_id;
 
     public DonationCenter() {
         // default constructor
     }
 
-    public DonationCenter(String name, String city, List<Donation> donations) {
+    public DonationCenter(String name, String city, BloodAvailable city_id) {
         this.name = name;
         this.city = city;
-        this.donations = donations;
+        this.city_id = city_id;
     }
 
     public Long getId() {
@@ -65,20 +62,11 @@ public class DonationCenter {
         this.city = city;
     }
 
-    public List<Donation> getDonation() {
-        return donations;
+    public BloodAvailable getCity_id() {
+        return city_id;
     }
 
-    public void setDonation(List<Donation> donations) {
-        this.donations = donations;
+    public void setCity_id(BloodAvailable city_id) {
+        this.city_id = city_id;
     }
-
-    public List<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
-    }
-
 }

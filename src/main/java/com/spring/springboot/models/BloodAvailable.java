@@ -32,7 +32,7 @@ public class BloodAvailable implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "city_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Centre> centres;
+    private List<DonationCenter> centres;
 
     public BloodAvailable() {
         // default constructor
@@ -66,11 +66,11 @@ public class BloodAvailable implements Serializable {
         this.blood_groups = blood_groups;
     }
 
-    public List<Centre> getCentres() {
+    public List<DonationCenter> getCentres() {
         return centres;
     }
 
-    public void setCentres(List<Centre> centres) {
+    public void setCentres(List<DonationCenter> centres) {
         this.centres = centres;
     }
 
