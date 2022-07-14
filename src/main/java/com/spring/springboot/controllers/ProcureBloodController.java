@@ -77,7 +77,6 @@ public class ProcureBloodController {
     @RequestMapping (value = "/procure/success")
     public String procureSuccessHandler()
     {
-        System.out.println("procureBloodHandler");
         return "/procure/success";
     }
     
