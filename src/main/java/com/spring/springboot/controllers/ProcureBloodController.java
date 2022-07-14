@@ -62,6 +62,7 @@ public class ProcureBloodController {
             return "/procure/form";
         }
         
+        pb.setStatus("pending");
 
         ProcureBlood obj = this.procureBloodService.save(pb);
 
@@ -73,9 +74,12 @@ public class ProcureBloodController {
         return "redirect:/procure/success";
     }
 
-    @RequestMapping (name = "/procure/success")
+    @RequestMapping (value = "/procure/success")
     public String procureSuccessHandler()
     {
+        System.out.println("procureBloodHandler");
         return "/procure/success";
     }
+    
+
 }

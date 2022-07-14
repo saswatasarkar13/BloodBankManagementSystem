@@ -6,4 +6,6 @@ import com.spring.springboot.models.Donation;
 
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
+    
+
 }
