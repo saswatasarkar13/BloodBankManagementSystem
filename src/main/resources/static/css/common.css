@@ -75,3 +75,30 @@ main {
 .bg-yellow {
   background-color: yellow;
 }
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #df1309;
+}
+
+nav ul {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style-type: none;
+  margin-right: 2rem;
+  margin-bottom: 0;
+}
+
+nav ul li {
+  padding: 0 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
