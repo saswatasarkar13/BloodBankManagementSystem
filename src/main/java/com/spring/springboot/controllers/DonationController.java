@@ -70,9 +70,16 @@ public class DonationController {
     }
 
     @RequestMapping(value = "/donation/success/{id}")
-    public String donationSuccessHandler(@PathVariable String id) {
-        System.out.println(id);
+    public String donationSuccessHandler(@PathVariable String id, Model model) {
+        
+        Long donationId = Long.parseLong(id);
+        Donation donation = this.donationService.findById(donationId);
+        if (donation==null)
+            return "redirect:/donation";
+        model.addAttribute("data", donation);  
         return "/donation/success";
+
     }
+
 
 }

@@ -1,6 +1,7 @@
 package com.spring.springboot.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,15 @@ public class ProcureBloodService {
 
     public List<ProcureBlood> getAllByUserId(Long userId){
         return this.procureBloodRepository.findAllByUserId(userId);
+    }
+
+    public ProcureBlood findById (long id)
+    {
+        Optional <ProcureBlood> procureBlood = this.procureBloodRepository.findById(id);
+        if (procureBlood.isPresent())
+            return procureBlood.get();
+        return null;
+
+
     }
 }
