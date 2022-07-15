@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
 </head>
 
 <body>
-    <h1>Donation kore felechis re pagla!!!!!</h1>
+    <div class="container">
+        <div class="card border-success mb-3" style="max-width: 38rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body text-success">
+                <h1 class="card-title">Congratulations!</h1>
+                <p class="card-text">Your Slot for Donation has been Booked.</p>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Download link</a>
+                    <a href="#" class="card-link">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>
