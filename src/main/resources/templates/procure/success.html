@@ -5,24 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success Procurement!!</title>
+    <title>Success Procurement</title>
     <th:block th:replace="fragments/lib :: common"></th:block>
 </head>
 
 <body>
     <th:block th:replace="fragments/nav :: navbar"></th:block>
 
-    <h1> This is success page for blood procure....</h1>
     <div class="container success_container">
-        <div class="card border-success mb-3" style="max-width: 40rem;">
+        <div class="card border-success mb-3" style="max-width: 60%;">
             <!--<div class="card-header">Success</div-->
             <div class="card-body text-success text-center">
                 <h1 class="card-title">Congratulations!</h1>
                 <br>
-                <p class="card-text" style="font-size: 1.2rem;"> Your Procure request has been Booked.</p>
+                <p class="card-text" style="font-size: 1.2rem;"> Your Procure request has been processed.</p>
+            </div>
+
+            <div class="card" style="width: 100%; border: none; padding: 0.5%; font-weight: 600;">
+                <img src="/icons/blood-transfusion.png" alt="Success tick" style="height: 7rem; margin:0 auto;">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size: 1.15rem; margin: 0;">Blood Procurement details:</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <span>Date :</span>
+                        <span th:text="${date}"></span>
+                    </li>
+                </ul>
+                <div class="card-body" style="display: flex; justify-content: center;">
+                    <button id="print-btn" class="btn nav-button mx-2">
+                        <a>Print</a>
+                    </button>
+                    <button class="btn nav-button">
+                        <a href="/home" class="card-link">Back to Home</a>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
 </body>
 
