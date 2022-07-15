@@ -31,7 +31,6 @@ public class Donation implements Serializable {
     @Column(name = "status", columnDefinition = "varchar(255) default 'pending'", nullable = false)
     private String status;
 
-
     @ManyToOne
     @JoinColumn(name = "donation_center_id", nullable = false)
     private DonationCenter donationCenter;
@@ -39,10 +38,6 @@ public class Donation implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User userId;
-
-
-
-    
 
     public Donation() {
         // default constructor
@@ -74,8 +69,6 @@ public class Donation implements Serializable {
     public Date getDate() {
         return date;
     }
-
-    
 
     public void setDate(Date date) {
         this.date = date;
