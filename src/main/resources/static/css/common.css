@@ -23,11 +23,11 @@ main {
   justify-content: center;
 }
 
-.form_container > form {
+.form_container>form {
   width: min(50vh, 400px);
 }
 
-.form_container > form > div {
+.form_container>form>div {
   margin: 1rem 0;
 }
 
@@ -116,6 +116,7 @@ main {
 
   font-weight: bold;
 }
+
 .box {
   width: 100%;
   background-color: rgb(236, 171, 176);
@@ -125,6 +126,7 @@ main {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 15px;
 }
+
 /* button{
   border: #29040a;
   background-color: #c9253b;
@@ -135,17 +137,21 @@ main {
 button:hover {
   background-color: #6b1927;
 }
+
 .carousel-item {
   max-height: 400px;
 }
+
 .carousel-item img {
   object-fit: contain;
   max-height: 400px;
 }
+
 .button-container {
   display: flex;
   justify-content: center;
 }
+
 nav {
   display: flex;
   align-items: center;
@@ -172,9 +178,11 @@ nav ul li a {
   color: #fff;
   font-weight: 600;
 }
+
 nav ul li a:hover {
   color: #000;
 }
+
 .btn-color {
   background: transparent;
   border: 1px solid rgb(243, 240, 240);
@@ -182,13 +190,38 @@ nav ul li a:hover {
 
 
 
-.carousel-control-next,.carousel-control-prev{
+.carousel-control-next,
+.carousel-control-prev {
   background: transparent !important;
   color: #000 !important;
 }
 
 
-.carousel-control-next-icon,.carousel-control-prev-icon{
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
   background-color: #cac4c4;
   border-radius: 50%;
+}
+
+.success_container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button {
+  padding: 2%;
+  background-color: #fb5f66;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.nav-button a {
+  text-decoration: none !important;
+  color: #ffffff;
+}
+
+.nav-button:hover {
+  background-color: #45b570;
 }
