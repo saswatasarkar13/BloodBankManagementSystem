@@ -1,5 +1,7 @@
 package com.spring.springboot.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,11 @@ public class DonationService {
         return this.donationRepository.save(donation);
     }
     
+    public Donation findById (long id)
+    {
+        Optional <Donation> donation = this.donationRepository.findById(id);
+        if (donation.isPresent())
+            return donation.get();
+        return null;
+    }
 }

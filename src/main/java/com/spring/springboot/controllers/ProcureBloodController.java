@@ -5,6 +5,7 @@ import java.util.TreeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -71,12 +72,16 @@ public class ProcureBloodController {
             return "/procure/form";
         }
 
-        return "redirect:/procure/success";
+        return "redirect:/procure/success" + Long.toString(obj.getId());
     }
 
-    @RequestMapping (value = "/procure/success")
-    public String procureSuccessHandler()
+    @RequestMapping (value = "/procure/success/{id}")
+    public String procureSuccessHandler(@PathVariable String id, Model model)
     {
+        Long procureId = Long.parseLong(id);
+        ProcureBlood procureBlood = this.procureBloodService.findById(procureId);
+        if (procureBlood == null)
+            return "redirect:/procure";
         return "/procure/success";
     }
     
