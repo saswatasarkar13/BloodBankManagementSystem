@@ -59,6 +59,7 @@ public class DonationController {
         User user = this.userService.findById(Long.parseLong(userId));
         donation.setUserId(user);
         donation.setBlood_group(user.getBlood_group());
+        donation.setStatus("pending");
         Donation res = this.donationService.save(donation);
 
         if (res == null) {
