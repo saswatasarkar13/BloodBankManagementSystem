@@ -1,5 +1,6 @@
 package com.spring.springboot.controllers;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class DonationController {
         User user = this.userService.findById(Long.parseLong(userId));
         donation.setUserId(user);
         donation.setBlood_group(user.getBlood_group());
+        donation.setStatus("pending");
         Donation res = this.donationService.save(donation);
 
         if (res == null) {
@@ -71,15 +73,21 @@ public class DonationController {
 
     @RequestMapping(value = "/donation/success/{id}")
     public String donationSuccessHandler(@PathVariable String id, Model model) {
-        
-        Long donationId = Long.parseLong(id);
-        Donation donation = this.donationService.findById(donationId);
-        if (donation==null)
-            return "redirect:/donation";
-        model.addAttribute("data", donation);  
-        return "/donation/success";
+        try {
+            Long donationId = Long.parseLong(id);
+            Donation donation = this.donationService.findById(donationId);
+            if (donation == null)
+                return "redirect:/donation";
+            Date date = donation.getDate();
+            String newDate = date.toString().substring(0, 11);
+            model.addAttribute("date", newDate);
+            model.addAttribute("data", donation);
 
+            return "/donation/success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/home";
+        }
     }
-
 
 }
