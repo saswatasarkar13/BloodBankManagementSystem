@@ -1,48 +1,192 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
 
     <th:block th:replace="fragments/lib :: common"></th:block>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <main class="container">
-        <h1>This is Home Page</h1>
+      <h1>This is Home Page</h1>
 
-        <div class="blood_list_table_container">
-            <table class="blood_list_table">
-                <thead>
-                    <th>City &#8595; / BloodGroup &#8594;</th>
-                    <th th:each="b : ${blood_groups}">
-                        <span th:text="${b}"></span>
-                    </th>
-                </thead>
-
-                <tbody>
-                    <tr th:each="item : ${blood_list.entrySet()}">
-                        <th th:text="${item.getKey()}"></th>
-
-                        <th:block th:each="mapEntry : ${item.getValue().entrySet()}">
-                            <th:block th:with="value=${mapEntry.getValue()}">
-                                <td th:if="${value == 0}" class="bg-red" th:text="${value}"></td>
-                                <th:block th:unless="${value == 0}">
-                                    <td th:if="${value > 10}" class="bg-green" th:text="${value}"></td>
-                                    <td th:unless="${value > 10}" class="bg-yellow" th:text="${value}"></td>
-                                </th:block>
-                            </th:block>
-                        </th:block>
-                    </tr>
-                </tbody>
-            </table>
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="image/image1.jpg" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="image/image2.png" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="image/image6.png" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="blood_list_table_container">
+        <table class="blood_list_table">
+          <thead>
+            <th>City &#8595; / BloodGroup &#8594;</th>
+            <th th:each="b : ${blood_groups}">
+              <span th:text="${b}"></span>
+            </th>
+          </thead>
+
+          <tbody>
+            <tr th:each="item : ${blood_list.entrySet()}">
+              <th th:text="${item.getKey()}"></th>
+
+              <th:block th:each="mapEntry : ${item.getValue().entrySet()}">
+                <th:block th:with="value=${mapEntry.getValue()}">
+                  <td
+                    th:if="${value == 0}"
+                    class="bg-red"
+                    th:text="${value}"
+                  ></td>
+                  <th:block th:unless="${value == 0}">
+                    <td
+                      th:if="${value > 10}"
+                      class="bg-green"
+                      th:text="${value}"
+                    ></td>
+                    <td
+                      th:unless="${value > 10}"
+                      class="bg-yellow"
+                      th:text="${value}"
+                    ></td>
+                  </th:block>
+                </th:block>
+              </th:block>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th colspan="3">Compatible Blood Type Donors:</th>
+            <!--- <th>Blood Type</th>
+                <th>Donate Blood to</th>
+                <th>Receive blood from</th>-->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Blood Type</b></td>
+            <td><b>Donate Blood to</b></td>
+            <td><b>Receive blood from</b></td>
+          </tr>
+          <tr>
+            <td>A+</td>
+            <td>A+,AB+</td>
+            <td>A+,A-,O-,O+</td>
+          </tr>
+          <tr class="active-row">
+            <td>B+</td>
+            <td>B+,AB+</td>
+            <td>B+,B-,O-,O+</td>
+          </tr>
+          <tr>
+            <td>O+</td>
+            <td>O+,A+,B+,AB+</td>
+            <td>O-,O+</td>
+          </tr>
+          <tr class="active-row">
+            <td>AB+</td>
+            <td>AB+</td>
+            <td>EVERYONE</td>
+          </tr>
+          <tr>
+            <td>A-</td>
+            <td>A+,A-,AB+,AB-</td>
+            <td>A+,A-,O-,O+</td>
+          </tr>
+          <tr class="active-row">
+            <td>B-</td>
+            <td>B+,B-,AB+,AB-</td>
+            <td>B-,O-</td>
+          </tr>
+          <tr>
+            <td>O-</td>
+            <td>EVERYONE</td>
+            <td>O-</td>
+          </tr>
+          <tr class="active-row">
+            <td>AB-</td>
+            <td>AB+,AB-</td>
+            <td>AB-,A-,O-,B-</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box">
+        <h3>Types of Donations</h3>
+        <p>
+          The human body contains five liters of blood, which is made of several
+          useful components i.e. <b>Whole blood</b>, <b>Platelet</b>, and
+          <b>Plasma</b>. Each type of component has several medical uses and can
+          be used for different medical treatments. your blood donation
+          determines the best donation for you to make. For plasma and platelet
+          donation you must have donated whole blood in past two years.
+        </p>
+        <div class="mx-auto button-container" >
+        <button class="btn btn-danger mx-2 ">Need Blood?</button>
+        <button class="btn btn-danger  ">Donate Blood</button>
+      </div>
+      </div>
     </main>
-
-</body>
-
+  </body>
 </html>
