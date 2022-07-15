@@ -36,7 +36,6 @@ main {
   width: 100%;
   justify-content: center;
   margin-top: 3rem;
-
 }
 
 .blood_list_table {
@@ -86,7 +85,6 @@ main {
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
- 
 }
 
 .content-table thead tr {
@@ -115,17 +113,16 @@ main {
 
 .content-table tbody tr.active-row {
   color: #740b25;
-  
+
   font-weight: bold;
 }
-.box{
-  
-  width:100%;
+.box {
+  width: 100%;
   background-color: rgb(236, 171, 176);
   margin: 0 auto;
-  border: 3px solid rgb(100, 27, 27);
-  border-radius: 18px;
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+  border: 2px solid rgb(100, 27, 27);
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 15px;
 }
 /* button{
@@ -135,25 +132,25 @@ main {
   display: block;
   
 } */
-button:hover{
+button:hover {
   background-color: #6b1927;
 }
-.carousel-item{
+.carousel-item {
   max-height: 400px;
-
 }
-.carousel-item img{
+.carousel-item img {
   object-fit: contain;
   max-height: 400px;
 }
-.button-container{
+.button-container {
   display: flex;
   justify-content: center;
+}
 nav {
   display: flex;
   align-items: center;
   padding: 1rem 5%;
-  background-color: #df1309;
+  background-color: #a53630;
 }
 
 nav ul {
@@ -174,4 +171,24 @@ nav ul li a {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
+}
+nav ul li a:hover {
+  color: #000;
+}
+.btn-color {
+  background: transparent;
+  border: 1px solid rgb(243, 240, 240);
+}
+
+
+
+.carousel-control-next,.carousel-control-prev{
+  background: transparent !important;
+  color: #000 !important;
+}
+
+
+.carousel-control-next-icon,.carousel-control-prev-icon{
+  background-color: #cac4c4;
+  border-radius: 50%;
 }
