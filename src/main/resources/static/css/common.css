@@ -81,7 +81,7 @@ main {
   padding: 0.3rem 2.1rem;
   font-size: 1.4rem;
   border: none;
-  background-color: #fb5f66;
+  background-color: var(--theme-red)/*#fb5f66;*/
   transition: all 0.5s;
 }
 
@@ -186,8 +186,18 @@ main {
   padding: 15px;
 }
 
+button{
+  background-color: var(--theme-red);
+  color: rgb(255, 255, 255);
+  transition: all 0.4s;
+  padding: 1%;
+  
+}
+
 button:hover {
-  background-color: #6b1927;
+  background-color: var(--theme-green);
+  color: rgb(255, 255, 255);
+  transform: scale(1.05);
 }
 
 .carousel-item {
@@ -285,6 +295,7 @@ nav ul li a:hover {
   background-color: var(--theme-red);
   color: #ffffff;
   font-weight: bolder;
+  transition: all 0.7s;
 }
 
 .nav-button a {
@@ -293,6 +304,7 @@ nav ul li a:hover {
 }
 
 .nav-button:hover {
-  background-color: #45b570;
+  background-color: var(--theme-green);
   color: #ffffff;
+  transform: scale(1.05);
 }
