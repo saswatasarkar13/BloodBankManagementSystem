@@ -163,6 +163,7 @@ main {
 
   font-weight: bold;
 }
+
 .box {
   width: 100%;
   background-color: rgb(236, 171, 176);
@@ -172,6 +173,7 @@ main {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 15px;
 }
+
 /* button{
   border: #29040a;
   background-color: #c9253b;
@@ -182,17 +184,21 @@ main {
 button:hover {
   background-color: #6b1927;
 }
+
 .carousel-item {
   max-height: 400px;
 }
+
 .carousel-item img {
   object-fit: contain;
   max-height: 400px;
 }
+
 .button-container {
   display: flex;
   justify-content: center;
 }
+
 nav {
   display: flex;
   align-items: center;
@@ -219,13 +225,17 @@ nav ul li a {
   color: #fff;
   font-weight: 600;
 }
+
 nav ul li a:hover {
   color: #000;
 }
+
 .btn-color {
   background: transparent;
   border: 1px solid rgb(243, 240, 240);
 }
+
+
 
 .carousel-control-next,
 .carousel-control-prev {
@@ -233,8 +243,32 @@ nav ul li a:hover {
   color: #000 !important;
 }
 
+
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
   background-color: #cac4c4;
   border-radius: 50%;
+}
+
+.success_container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button {
+  padding: 2%;
+  background-color: #fb5f66;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.nav-button a {
+  text-decoration: none !important;
+  color: #ffffff;
+}
+
+.nav-button:hover {
+  background-color: #45b570;
 }

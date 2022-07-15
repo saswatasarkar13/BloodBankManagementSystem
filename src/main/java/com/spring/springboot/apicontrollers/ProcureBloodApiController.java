@@ -1,5 +1,6 @@
 package com.spring.springboot.apicontrollers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +20,21 @@ public class ProcureBloodApiController
     private ProcureBloodService procureBloodService;
 
     @RequestMapping (value = "/status", method = RequestMethod.PUT)
-    public String setStatus(@RequestBody Map <String, String> body){
+    public Map<String, Object> setStatus(@RequestBody Map <String, String> body){
     String pbid = body.get("id");
+    String pbStatus =  body.get("status");
+    HashMap<String, Object> map = new HashMap<>();
     ProcureBlood procureBlood = this.procureBloodService.findById(Long.parseLong(pbid));
-    procureBlood.setStatus("Completed");
+    procureBlood.setStatus(pbStatus);
     ProcureBlood procureBloodStatus =  this.procureBloodService.save(procureBlood);
-    if (procureBloodStatus == null)
-        return "Unseccessfull";
-    
-    return "Successfull";
-    
+    if (procureBloodStatus == null){
+        map.put("success", false);
+        return map;
     }
+    else
+    {
+    map.put("success",true);
+    return map;
+    }
+}
 }

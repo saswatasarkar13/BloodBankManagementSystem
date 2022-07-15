@@ -1,5 +1,6 @@
 package com.spring.springboot.apicontrollers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,8 @@ public class BloodApiController {
     }
 
     @RequestMapping(value = "/group", method = RequestMethod.POST)
-    public String addBloodGroup(@RequestBody Map<String, String> payload) {
-
+    public Map<String, Object> addBloodGroup(@RequestBody Map<String, String> payload) {
+        HashMap<String, Object> map = new HashMap<>();
         try {
             String city = (String) payload.get("city");
             String blood_group = (String) payload.get("bloodGroup");
@@ -48,11 +49,16 @@ public class BloodApiController {
 
             BloodGroupAvailable result = bloodGroupAvaliableService.save(obj);
             if (result!=null)
-                return "Successfull";
+            {   map.put("success", true);
+                return map;   
+            }
             else
-                return "Unsucessfull";
+            {map.put("success", false);
+            return map;    
+            }
         } catch (Exception e) {
-            return "Unsucessfull";
+            map.put("success", false);
+                return map;
         }
     }
 }

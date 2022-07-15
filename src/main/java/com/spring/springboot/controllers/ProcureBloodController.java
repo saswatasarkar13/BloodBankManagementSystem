@@ -72,7 +72,7 @@ public class ProcureBloodController {
             return "/procure/form";
         }
 
-        return "redirect:/procure/success" + Long.toString(obj.getId());
+        return "redirect:/procure/success/" + Long.toString(obj.getId());
     }
 
     @RequestMapping (value = "/procure/success/{id}")
