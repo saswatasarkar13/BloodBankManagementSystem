@@ -29,17 +29,17 @@ main {
   justify-content: center;
 }
 
-.form_container>form>div {
+.form_container > form > div {
   width: 100%;
   display: flex;
 }
 
-.form_container>form>div>div {
+.form_container > form > div > div {
   width: 40vw;
   padding: 1rem;
 }
 
-.form_container>form>div>div>div {
+.form_container > form > div > div > div {
   padding: 0.4rem 0;
 }
 
@@ -50,7 +50,7 @@ main {
   margin-bottom: 4.65rem;
 }
 
-.profile_pic>img {
+.profile_pic > img {
   border-radius: 50%;
   object-fit: cover;
 }
@@ -209,6 +209,9 @@ nav {
   align-items: center;
   padding: 1rem 5%;
   background-color: #a53630;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 }
 
 nav ul {
@@ -229,13 +232,14 @@ nav ul li a {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
+  transition: all 0.4s;
 }
 
 nav ul li a:hover {
   color: #000;
 }
 
-.nav_username{
+.nav_username {
   margin-right: 20px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -243,11 +247,11 @@ nav ul li a:hover {
   align-items: center;
 }
 
-.nav_username img{
+.nav_username img {
   margin-right: 5px;
 }
 
-.nav_username a{
+.nav_username a {
   text-decoration: none !important;
   color: #fff !important;
 }
