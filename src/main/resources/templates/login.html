@@ -8,39 +8,46 @@
     <title>Login</title>
 
     <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <link th:href="@{/css/login.css}" rel="stylesheet">
 </head>
 
 <body>
 
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
     <main class="container">
-        <h1>This is Login Page</h1>
+        <div class="login_form_container">
+            <form th:action="@{/auth/login}" method="post" th:object="${user}">
 
-        <form th:action="@{/auth/login}" method="post" th:object="${user}">
+                <h3 class="login_heading">Login to continue!</h3>
 
-            <div>
-                <th:block th:if="${loginError != null}">
-                    <p class="text-danger" th:text="${loginError}"></p>
-                </th:block>
+                <div>
+                    <th:block th:if="${loginError != null}">
+                        <p class="text-danger" th:text="${loginError}"></p>
+                    </th:block>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="loginEmail">Email</label>
+                    <input th:field="*{email}" type="email" id="loginEmail" class="form-control" required />
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <input th:field="*{password}" type="password" id="loginPassword" class="form-control" required />
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn d-block mx-auto mb-4 login_btn">Log in</button>
+            </form>
+
+            <div class="text-center">
+                <p style="color: grey;">Not a member? <a href="/user/form">Register</a></p>
             </div>
 
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                <input th:field="*{email}" type="email" id="loginEmail" class="form-control" required />
-                <label class="form-label" for="loginEmail">Email</label>
-            </div>
-
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-                <input th:field="*{password}" type="password" id="loginPassword" class="form-control" required />
-                <label class="form-label" for="loginPassword">Password</label>
-            </div>
-
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
-        </form>
-
-        <div class="text-center">
-            <p>Not a member? <a href="/user/form">Register</a></p>
         </div>
     </main>
 
