@@ -1,0 +1,119 @@
+.blood_list_table_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.blood_list_table {
+  width: 100%;
+}
+
+.blood_list_table th {
+  padding: 0.2rem 1rem;
+}
+
+.blood_list_table td {
+  padding: 0;
+  padding: 0.2rem 1rem;
+  font-weight: bold;
+}
+
+.blood_list_table,
+.blood_list_table th,
+.blood_list_table td {
+  border: 1px solid black;
+  border-collapse: separate;
+  text-align: center;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 300px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #a02636;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #610615;
+}
+
+.content-table tbody tr.active-row {
+  color: #740b25;
+
+  font-weight: bold;
+}
+
+.box {
+  width: 100%;
+  background-color: rgb(236, 171, 176);
+  margin: 0 auto;
+  border: 2px solid rgb(100, 27, 27);
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+
+button {
+  background-color: var(--theme-red);
+  color: rgb(255, 255, 255);
+  transition: all 0.4s;
+  padding: 1%;
+}
+
+button:hover {
+  background-color: var(--theme-green);
+  color: rgb(255, 255, 255);
+  transform: scale(1.05);
+}
+
+.carousel-item {
+  max-height: 400px;
+}
+
+.carousel-item img {
+  object-fit: contain;
+  max-height: 400px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  background: transparent !important;
+  color: #000 !important;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: #cac4c4;
+  border-radius: 50%;
+}

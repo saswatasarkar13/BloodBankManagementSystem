@@ -8,6 +8,8 @@
   <title>Home</title>
 
   <th:block th:replace="fragments/lib :: common"></th:block>
+
+  <link th:href="@{/css/home.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -47,7 +49,11 @@
         </button>
       </div>
 
+
       <div class="blood_list_table_container">
+        <h2 class="text-center m-0">Availability</h2>
+        <hr style="background-color: gray; width: 100%;">
+
         <table class="blood_list_table">
           <thead>
             <th>City &#8595; / BloodGroup &#8594;</th>
