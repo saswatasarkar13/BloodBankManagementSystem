@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --theme-red: #fb5f66;
+  --theme-green: #45b570;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -71,12 +76,19 @@ main {
   height: 100%;
 }
 
-.submit_btn{
+.submit_btn {
   margin: 0 auto;
   padding: 0.3rem 2.1rem;
   font-size: 1.4rem;
+  border: none;
+  background-color: #fb5f66;
+  transition: all 0.5s;
 }
 
+.submit_btn:hover {
+  background-color: #45b570;
+  transform: scale(1.05);
+}
 
 .blood_list_table_container {
   display: flex;
@@ -174,13 +186,6 @@ main {
   padding: 15px;
 }
 
-/* button{
-  border: #29040a;
-  background-color: #c9253b;
-  margin: 0 auto;
-  display: block;
-  
-} */
 button:hover {
   background-color: #6b1927;
 }
@@ -235,14 +240,11 @@ nav ul li a:hover {
   border: 1px solid rgb(243, 240, 240);
 }
 
-
-
 .carousel-control-next,
 .carousel-control-prev {
   background: transparent !important;
   color: #000 !important;
 }
-
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
@@ -259,7 +261,7 @@ nav ul li a:hover {
 
 .nav-button {
   padding: 2%;
-  background-color: #fb5f66;
+  background-color: var(--theme-red);
   color: #ffffff;
   font-weight: bolder;
 }
@@ -270,5 +272,5 @@ nav ul li a:hover {
 }
 
 .nav-button:hover {
-  background-color: #45b570;
+  background-color: var(--theme-green);
 }
