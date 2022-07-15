@@ -13,11 +13,17 @@
 
 <body>
     <main class="container">
-        <h1 class="heading">Get Blood from your our blood bank</h1>
+        <h1 class="heading">Get blood from our blood bank</h1>
 
         <div class="form_container">
-            <form th:action="@{/user/add}" method="post" th:object="${user}">
-
+            <form th:action="@{/procure/add}" method="post" th:object="${procure}">
+                
+                <div>
+                    <th:block th:if="${error != null}">
+                        <p class="text-danger" th:text="${error}"></p>
+                    </th:block>
+                </div>
+        
 
                 <div class="form-group">
                     <label for="city">City</label>
@@ -32,22 +38,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="quantity">City</label>
-                    <input th:field="*{quantity}" type="number" class="form-control" id="quantity" placeholder="Quantity of Blood" required>
+                    <label for="quantity">Quantity of blood units:</label>
+                    <input th:field="*{quantity}" type="number" min="1" class="form-control" id="quantity" placeholder="Quantity of Blood" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="date">Date of Blood requirement</label>
+                    <label for="date">Date of Blood requirement:</label>
                     <input th:field="*{date}" type="date" class="form-control" id="date" placeholder="Date of Blood Requirement" required>
                 </div>
-                
-                
 
                 <!-- Optional -->
 
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="Check">
-                    <label class="form-check-label" for="Check">Agree to the Terms&amp;Conditions</label>
+                    <label class="form-check-label" for="Check">Agree to the Terms &amp; Conditions</label>
                 </div>
 
                 <button type="submit" class="btn btn-success d-block mx-auto">Register</button>

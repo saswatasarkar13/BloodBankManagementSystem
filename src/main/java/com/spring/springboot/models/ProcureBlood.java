@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class ProcureBlood implements Serializable {
     @Id
@@ -22,13 +24,20 @@ public class ProcureBlood implements Serializable {
     private Integer quantity;
 
     @Column(name = "date", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+
+    @Column(name = "status", columnDefinition = "varchar(255) default 'pending'", nullable = false)
+    private String status;
 
     @Column(name = "is_donation", columnDefinition = "boolean default false")
     private Boolean isDonation;
 
     @Column(name = "blood_group", nullable = false)
     private String blood_group;
+
+    @Column(name = "city", nullable = false)
+    private String city;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -91,6 +100,22 @@ public class ProcureBlood implements Serializable {
 
     public void setUser_id(User user_id) {
         this.user_id = user_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
 }

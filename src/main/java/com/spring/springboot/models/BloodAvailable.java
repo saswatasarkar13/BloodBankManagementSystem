@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "blood_avaliable", uniqueConstraints = @UniqueConstraint(columnNames = { "city" }))
 public class BloodAvailable implements Serializable {
@@ -27,6 +29,10 @@ public class BloodAvailable implements Serializable {
 
     @OneToMany(mappedBy = "city_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BloodGroupAvailable> blood_groups;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DonationCenter> centres;
 
     public BloodAvailable() {
         // default constructor
@@ -58,6 +64,14 @@ public class BloodAvailable implements Serializable {
 
     public void setBlood_groups(List<BloodGroupAvailable> blood_groups) {
         this.blood_groups = blood_groups;
+    }
+
+    public List<DonationCenter> getCentres() {
+        return centres;
+    }
+
+    public void setCentres(List<DonationCenter> centres) {
+        this.centres = centres;
     }
 
 }
