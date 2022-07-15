@@ -1,0 +1,13 @@
+.procure_form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.procure_form_container form {
+  width: 50%;
+}
+
+.procure_form_container form > div {
+  padding: 0.4rem 0;
+}

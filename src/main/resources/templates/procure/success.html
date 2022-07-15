@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,10 @@
     <title>Success Procurement</title>
     <th:block th:replace="fragments/lib :: common"></th:block>
 </head>
+
 <body>
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
     <div class="container success_container">
         <div class="card border-success mb-3" style="max-width: 60%;">
             <!--<div class="card-header">Success</div-->
@@ -36,8 +40,9 @@
                         <a href="/home" class="card-link">Back to Home</a>
                     </button>
                 </div>
+            </div>
         </div>
-    </div>
-    
+
 </body>
+
 </html>

@@ -11,6 +11,8 @@
 </head>
 
 <body>
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
     <main class="container">
         <h1>Donation korbo re</h1>
         <form th:action="@{/donation/add}" method="post" th:object="${donation}">
