@@ -23,15 +23,15 @@ public class DonationCenter {
 
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
-    private BloodAvailable city_id;
+    private BloodAvailable city;
 
     public DonationCenter() {
         // default constructor
     }
 
-    public DonationCenter(String name, BloodAvailable city_id) {
+    public DonationCenter(String name, BloodAvailable city) {
         this.name = name;
-        this.city_id = city_id;
+        this.city = city;
     }
 
     public Long getId() {
@@ -50,11 +50,12 @@ public class DonationCenter {
         this.name = name;
     }
 
-    public BloodAvailable getCity_id() {
-        return city_id;
+    public BloodAvailable getCity() {
+        return city;
     }
 
-    public void setCity_id(BloodAvailable city_id) {
-        this.city_id = city_id;
+    public void setCity(BloodAvailable city) {
+        this.city = city;
     }
+
 }

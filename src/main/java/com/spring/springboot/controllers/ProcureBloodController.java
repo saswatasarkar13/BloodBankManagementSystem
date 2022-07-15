@@ -68,7 +68,7 @@ public class ProcureBloodController {
 
         if(obj == null){
             model.addAttribute("errorMessage", "Sorry, Something went wrong!");
-            return "/procure";
+            return "/procure/form";
         }
 
         return "redirect:/procure/success";

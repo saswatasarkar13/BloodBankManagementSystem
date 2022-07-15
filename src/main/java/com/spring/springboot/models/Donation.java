@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "donation")
 public class Donation implements Serializable {
@@ -23,6 +25,7 @@ public class Donation implements Serializable {
     private String blood_group;
 
     @Column(name = "date", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     @ManyToOne

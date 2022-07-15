@@ -31,7 +31,7 @@ public class BloodAvailable implements Serializable {
     private List<BloodGroupAvailable> blood_groups;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "city_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DonationCenter> centres;
 
     public BloodAvailable() {
