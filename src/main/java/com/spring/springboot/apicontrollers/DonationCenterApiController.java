@@ -14,7 +14,7 @@ import com.spring.springboot.services.BloodAvailableService;
 import com.spring.springboot.services.DonationCenterService;
 
 @RestController
-// @RequestMapping (value = "/api/donation")
+@RequestMapping (value = "/api/donation/center")
 public class DonationCenterApiController {
 
     @Autowired
@@ -23,12 +23,13 @@ public class DonationCenterApiController {
     @Autowired
     private BloodAvailableService bloodAvailableService;
 
-    @RequestMapping (value = "/api/donation", method = RequestMethod.POST)
+    @RequestMapping (value = "/", method = RequestMethod.POST)
     public String addDonationCenter(@RequestBody Map <String, String> body){
         String city =body.get("city");
         String name= body.get("name");
 
-        System.out.println("Bhaiii ami ekhaneee");
+        //System.out.println("Bhaiii ami ekhaneee");
+        
         BloodAvailable cityB = this.bloodAvailableService.findByCity(city);
         DonationCenter donationCenter = new DonationCenter(name, cityB);
         DonationCenter dcStatus = this.donationCenterService.save(donationCenter);  
