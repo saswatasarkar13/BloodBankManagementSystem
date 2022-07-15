@@ -22,7 +22,11 @@ const checkUser = () => {
   const loginBtn = document.getElementById("login-btn");
   const logoutBtn = document.getElementById("logout-btn");
 
-  //   console.log({ profileBtn, registerBtn, loginBtn, logoutBtn });
+  //  console.log({ profileBtn, registerBtn, loginBtn, logoutBtn });
+
+  if (!profileBtn || !registerBtn || !loginBtn) {
+    return;
+  }
 
   if (cookies.userid) {
     registerBtn.style.display = "none";

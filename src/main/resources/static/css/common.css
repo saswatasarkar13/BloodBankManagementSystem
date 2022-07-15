@@ -9,10 +9,14 @@
   --theme-green: #45b570;
 }
 
-main {
+body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+}
+
+body main {
+  flex-grow: 1;
 }
 
 .heading {
@@ -264,6 +268,16 @@ nav ul li a:hover {
 .nav_username a {
   text-decoration: none !important;
   color: #fff !important;
+}
+
+.logo_container a{
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.logo_container img {
+  margin-right: 10px;
 }
 
 .btn-color {
