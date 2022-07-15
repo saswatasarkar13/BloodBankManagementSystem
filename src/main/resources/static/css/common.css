@@ -235,6 +235,23 @@ nav ul li a:hover {
   color: #000;
 }
 
+.nav_username{
+  margin-right: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.nav_username img{
+  margin-right: 5px;
+}
+
+.nav_username a{
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
 .btn-color {
   background: transparent;
   border: 1px solid rgb(243, 240, 240);
