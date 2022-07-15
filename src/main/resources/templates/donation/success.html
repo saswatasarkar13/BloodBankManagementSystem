@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -16,39 +16,45 @@
             <!--<div class="card-header">Success</div-->
             <div class="card-body text-success text-center">
                 <h1 class="card-title">Congratulations!</h1>
-                <p class="card-text">Your Slot for Donation has been Booked.</p>
+                <br>
+                <p class="card-text" style="font-size: 1.2rem;">Thank you for being a hero for somebody and helping us save lives. Your Slot for
+                    Blood Donation has been Booked.</p>
             </div>
 
-            <div class="card" style="width: 30rem; border: none;">
+            <div class="card" style="width: 38rem; border: none; padding: 0.5%;">
                 <img src="/icons/blood-donation-icon.png" alt="Success tick" style="width: 20%; margin:0 auto;">
                 <div class="card-body">
                     <h5 class="card-title" style="font-size: 1.15rem; margin: 0;">Donation Slot details:</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-   
+
                     <li class="list-group-item">
                         <span>Name : </span>
-                        <span></span>
+                        <span th:text="${data.getUserId().getName()}" style="text-transform: capitalize;"></span>
                     </li>
                     <li class="list-group-item">
                         <span>Blood Group :</span>
-                        <span></span>
+                        <span th:text="${data.getBlood_group()}"></span>
                     </li>
-                    <li class="list-group-item">
-                        <span>City :</span>
-                        <span></span>
-                    </li>
+
                     <li class="list-group-item">
                         <span>Center :</span>
-                        <span></span>
+                        <span th:text="${data.getDonationCenter().getName()}"></span>
+
                     </li>
+
+                    <li class="list-group-item">
+                        <span>City :</span>
+                        <span th:text="${data.getDonationCenter().getCity().getCity()}"></span>
+                    </li>
+
                     <li class="list-group-item">
                         <span>Date :</span>
-                        <span></span>
+                        <span th:text="${data.getDate()}"></span>
                     </li>
                     <li class="list-group-item">
                         <span>Status :</span>
-                        <span></span>
+                        <span th:text="${data.getStatus()}" style="text-transform: capitalize;"></span>
                     </li>
                 </ul>
                 <div class="card-body" style="display: flex; justify-content: center;">
@@ -56,7 +62,7 @@
                         <a href="#" class="card-link">Download link</a>
                     </button>
                     <button class="btn nav-button">
-                        <a href="#" class="card-link">Back to Dashboard</a>
+                        <a href="/home" class="card-link">Back to Home</a>
                     </button>
                 </div>
             </div>
