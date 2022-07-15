@@ -78,12 +78,13 @@ public class DonationController {
             Donation donation = this.donationService.findById(donationId);
             if (donation == null)
                 return "redirect:/donation";
+            else{
             Date date = donation.getDate();
             String newDate = date.toString().substring(0, 11);
             model.addAttribute("date", newDate);
             model.addAttribute("data", donation);
-
             return "/donation/success";
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:/home";
