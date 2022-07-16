@@ -2,165 +2,208 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <th:block th:replace="fragments/lib :: common"></th:block>
-    <script src="/js/userRegister.js" defer></script>
-    <script src="/js/profile.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <th:block th:replace="fragments/lib :: common"></th:block>
+
+  <link th:href="@{/css/profile.css}" rel="stylesheet">
+
+  <script src="/js/userRegister.js" defer></script>
+  <script src="/js/profile.js" defer></script>
 
 </head>
+
 <body>
-    <section style="background-color: #eee;">
-       <div class="container py-5">
-          <!---- <div class="row">
-            <div class="col">
-              <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                <ol class="breadcrumb mb-0">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item"><a href="#">User</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                </ol>
-              </nav>
-            </div>
-          </div>-->
-      
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card mb-4">
-                <div class="card-body text-center">
-                  <img id="profile-photo" src="https://ui-avatars.com/api/?rounded=true" alt="avatar"
-                    class="rounded-circle " width="150" height="150" style="object-fit: cover;">
-                    <br>
-                    <br>
-                    <button class="btn btn-outline-primary" id="edit-photo-button">Edit Photo</button>
+  <th:block th:replace="fragments/nav :: navbar"></th:block>
 
-                    <input type ="file" id="edit-photo-input" hidden>
-                  <h5 class="my-3" th:text="${user.getName()}"></h5>
-                  <p class="text-muted mb-1" th:text="${user.getEmail()}"></p>
-                  <p class="text-muted mb-4" th:text="${user.getContact()}"></p>
-                  <div class="d-flex justify-content-center mb-2">
-                   
-                  </div>
+  <section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img id="profile-photo" src="https://ui-avatars.com/api/?rounded=true" alt="avatar" class="rounded-circle"
+                width="150" height="150" style="object-fit: cover;">
+              <br>
+              <br>
+              <button class="btn btn-outline-primary" id="edit-photo-button">Edit Photo</button>
+
+              <input type="file" id="edit-photo-input" hidden>
+              <h5 class="my-3" th:text="${user.getName()}"></h5>
+              <p class="text-muted mb-1" th:text="${user.getEmail()}"></p>
+              <p class="text-muted mb-4" th:text="${user.getContact()}"></p>
+            </div>
+          </div>
+
+          <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush rounded-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fas fa-globe fa-lg text-warning"></i>
+                  <h4>Achivements</h4>
+                  <p class="mb-0"></p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                  <p class="mb-0"></p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                  <p class="mb-0"></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" th:text="${user.getName()}"></p>
                 </div>
               </div>
-              <div class="card mb-4 mb-lg-0">
-                <div class="card-body p-0">
-                  <ul class="list-group list-group-flush rounded-3">
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fas fa-globe fa-lg text-warning"></i>
-                      <h4>Achivements</h4>
-                      <p class="mb-0"></p>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                      <p class="mb-0"></p>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                      <p class="mb-0"></p>
-                    </li>
-                 
-                  </ul>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" th:text="${user.getEmail()}"></p>
                 </div>
               </div>
-            </div>
-
-
-            <div class="col-lg-8">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <p class="mb-0">Full Name</p>
-                    </div>
-                    <div class="col-sm-9">
-                      <p class="text-muted mb-0" th:text="${user.getName()}"></p>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <p class="mb-0">Email</p>
-                    </div>
-                    <div class="col-sm-9">
-                      <p class="text-muted mb-0"th:text="${user.getEmail()}"></p>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <p class="mb-0">Phone</p>
-                    </div>
-                    <div class="col-sm-9">
-                      <p class="text-muted mb-0" th:text="${user.getContact()}"></p>
-                    </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <p class="mb-0">D.O.B</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <p class="text-muted mb-0" th:text="${user.getDob()}"></p>
-                      </div>
-                  </div>
-                  <hr>
-                  
-               
-                  
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <p class="mb-0">Address</p>
-                    </div>
-                    <div class="col-sm-9">
-                      <p class="text-muted mb-0" th:text="${user.getAddress()}"></p>
-                    </div>
-                  </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
                 </div>
-             
-
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="card">
-                            <div class="card-body card-position">
-                              <h5 class="card-title">Procure </h5>
-                              <p class="card-text">Collection details</p>
-                              <p class="card-text date">Date:</p>
-                              <!--<ul class="list-group list-group-flush">-->
-                                <p class="list-group-item">Blood Group:</p>
-                                <p class="list-group-item">Quantity:</p>
-                                <p class="list-group-item">Status:</p>
-                             <!--- </ul>-->
-                              
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="card">
-                            <div class="card-body card-position">
-                              <h5 class="card-title">Donations</h5>
-                              <p class="card-text">Donation details</p>
-                              <p class="card-text date">Date:</p>
-                            
-                            <!--<ul class="list-group list-group-flush">-->
-                              <p class="list-group-item">Donation Center:</p>
-                              <p class="list-group-item">Quantity:</p>
-                              <p class="list-group-item">Status:</p>
-                            </ul>
-                             
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                   
-                    
-                  
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" th:text="${user.getContact()}"></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Date of Birth</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" th:text="${#dates.format(user.getDob(), 'dd-MMM-yyyy')}"></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" th:text="${user.getAddress()}"></p>
                 </div>
               </div>
             </div>
           </div>
+
+
+          <div class="row">
+            <div class="col-sm-6">
+              <h5 class="title text-center text-success">Procures</h5>
+
+              <th:block th:if="${procureBloods.isEmpty()}">
+                <p class="text-center text-gray">No procureBloods.</p>
+              </th:block>
+
+              <th:block th:unless="${procureBloods.isEmpty()}">
+                <th:block th:each="p : ${procureBloods}">
+                  <!-- item -->
+                  <a th:href="'/procure/success/' + ${p.getId()}" class="item_anchor_container">
+
+                    <div class="card card_position_relative">
+                      <p class="card-text card_date">
+                        <span th:text="${#dates.format(p.getDate(), 'dd-MMM-yyyy')}"></span>
+                      </p>
+
+                      <div class="card-body">
+                        <p class="list-group-item">
+                          <span class="bold" th:text="${p.getBlood_group()}"></span>
+                          <span> group, </span>
+                          <span class="bold" th:text="${p.getQuantity()}"></span>
+                          <span> units</span>
+                        </p>
+                        <p class="list-group-item text-gray">
+                          <span>Status: </span>
+                          <span class="bold">
+                            <th:block th:switch="${p.getStatus()}">
+                              <span th:case="pending" class="text-warning">Pending</span>
+                              <span th:case="completed" class="text-success">Completed</span>
+                              <span th:case="cancelled" class="text-danger">Cancelled</span>
+                              <span th:case="*" th:text="${#strings.capitalize(p.getStatus())}"></span>
+                            </th:block>
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <!----------->
+                </th:block>
+              </th:block>
+            </div>
+
+            <div class="col-sm-6">
+              <h5 class="card-title text-center text-danger">Donations</h5>
+
+              <th:block th:if="${donations.isEmpty()}">
+                <p>No Donations.</p>
+              </th:block>
+
+              <th:block th:unless="${donations.isEmpty()}">
+                <th:block th:each="d : ${donations}">
+                  <!-- item -->
+                  <a th:href="'/donation/success/' + ${d.getId()}" class="item_anchor_container">
+                    <div class="card card_position_relative">
+                      <p class="card-text card_date">
+                        <span th:text="${#dates.format(d.getDate(), 'dd-MMM-yyyy')}"></span>
+                      </p>
+
+                      <div class="card-body">
+                        <p class="list-group-item">
+                          <span th:text="${d.getDonationCenter().getName()}"></span>
+                          <span>, </span>
+                          <span th:text="${d.getDonationCenter().getCity().getCity()}"></span>
+                        </p>
+                        <p class="list-group-item text-gray">
+                          <span>Status: </span>
+                          <span class="bold">
+                            <th:block th:switch="${d.getStatus()}">
+                              <span th:case="pending" class="text-warning">Pending</span>
+                              <span th:case="completed" class="text-success">Completed</span>
+                              <span th:case="cancelled" class="text-danger">Cancelled</span>
+                              <span th:case="*" th:text="${#strings.capitalize(d.getStatus())}"></span>
+                            </th:block>
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <!----------->
+
+                </th:block>
+              </th:block>
+
+            </div>
+
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
 </body>
+
 </html>
