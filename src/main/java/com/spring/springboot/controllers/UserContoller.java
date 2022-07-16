@@ -61,16 +61,19 @@ public class UserContoller {
 
         return "redirect:/home";
     }
+
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String profilehandler(Model model,@CookieValue(name = "userid", defaultValue = "") String id) {
+    public String profilehandler(Model model, @CookieValue(name = "userid", defaultValue = "") String id) {
 
         Long userId = Long.parseLong(id);
+        // System.out.println(userId);
         User user = this.userService.findById(userId);
         model.addAttribute("user", user);
 
-        model.addAttribute("donations", this.donationService.getAllByUserId(userId));
+        // model.addAttribute("donations", this.donationService.getAllByUserId(userId));
 
-        model.addAttribute("procureBloods", this.procureBloodService.getAllByUserId(userId));
+        // model.addAttribute("procureBloods",
+        // this.procureBloodService.getAllByUserId(userId));
 
         return "/user/profile";
     }
