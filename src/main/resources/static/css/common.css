@@ -118,7 +118,7 @@ main {
 }
 .box {
   width: 100%;
-  background-color: rgb(236, 171, 176);
+  background-color: rgb(223, 172, 176);
   margin: 0 auto;
   border: 2px solid rgb(100, 27, 27);
   border-radius: 8px;

@@ -54,4 +54,11 @@ public class UserContoller {
 
         return "redirect:/home";
     }
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String profilehandler() {
+
+        
+
+        return "/user/profile";
+    }
 }
