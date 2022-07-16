@@ -9,6 +9,11 @@
 
     <th:block th:replace="fragments/lib :: common"></th:block>
 
+    <!-- Register css -->
+    <link th:href="@{/css/register.css}" rel="stylesheet">
+
+    <script src="/js/userRegister.js" defer></script>
+
 </head>
 
 <body>
@@ -17,74 +22,125 @@
 
         <div class="form_container">
             <form th:action="@{/user/add}" method="post" th:object="${user}">
+                <div>
+                    <div>
 
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
-                        placeholder="Enter name" th:field="*{name}" required>
+                        <div class="profile_picture_container">
+                            <div class="profile_pic">
+                                <img id="dp"
+                                    src="https://cdn.allthings.how/wp-content/uploads/2020/10/allthings.how-how-to-change-your-profile-picture-on-google-meet-profile-photo-759x427.png?width=600"
+                                    alt="" width="150" height="150">
 
-                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                                <div class="edit_icon" id="edit-icon">
+                                    <img src="/icons/edit-icon.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                                placeholder="Enter name" th:field="*{name}" required>
+
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                        </div>
+
+                        <div>
+                            <p style="margin: 0;">Gender : </p>
+                            <div class="form-check form-check-inline">
+                                <input th:field="*{gender}" class="form-check-input" type="radio"
+                                    name="inlineRadioOptions" id="inlineRadio1" value="male" required />
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                    value="female" th:field="*{gender}" required />
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                    value="others" th:field="*{gender}" required />
+                                <label class="form-check-label" for="inlineRadio3">Others</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email">Email address</label>
+                            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"
+                                placeholder="Enter email" th:field="*{email}" required>
+
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <input th:field="*{password}" type="password" class="form-control" id="Password"
+                                placeholder="Password" required>
+                        </div>
+
+                        <div class="form-group form-check" style="padding-left: 2rem;">
+                            <input type="checkbox" class="form-check-input" id="Check">
+                            <label class="form-check-label" for="Check">
+                                Agree to the <a href="/terms">Terms &amp; Conditions</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input th:field="*{dob}" type="date" class="form-control" id="dob" placeholder="Date"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blood-group-selectbox">Blood Group:</label>
+                            <select th:field="*{blood_group}" class="form-control" id="blood-group-selectbox" required>
+                                <option th:each="c : ${bloodGroups}" th:value="${c}" th:text="${c}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">Contact</label>
+                            <input th:field="*{contact}" type="tel" class="form-control" id="contact"
+                                placeholder="Contact" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input th:field="*{city}" type="text" class="form-control" id="city" placeholder="City"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input th:field="*{state}" type="text" class="form-control" id="state" placeholder="State"
+                                required>
+                        </div>
+
+                        <!-- Optional -->
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input th:field="*{address}" type="text" class="form-control" id="address"
+                                placeholder="Address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input th:field="*{pincode}" type="number" class="form-control" id="pincode"
+                                placeholder="Pincode">
+                        </div>
+
+                        <input type="text" th:field="*{dp}" id="dpInput" hidden />
+
+                        <input type="file" id="fileInput" hidden />
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="Email">Email address</label>
-                    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"
-                        placeholder="Enter email" th:field="*{email}" required>
-
-                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                <div>
+                    <button type="submit" class="btn btn-success submit_btn">Register</button>
                 </div>
-
-                <div class="form-group">
-                    <label for="Password">Password</label>
-                    <input th:field="*{password}" type="password" class="form-control" id="Password"
-                        placeholder="Password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="dob">Date of Birth</label>
-                    <input th:field="*{dob}" type="date" class="form-control" id="dob" placeholder="Date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="blood-group-selectbox">Blood Group:</label>
-                    <select th:field="*{blood_group}" class="form-control" id="blood-group-selectbox" required>
-                        <option th:each="c : ${bloodGroups}" th:value="${c}" th:text="${c}"></option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="contact">Contact</label>
-                    <input th:field="*{contact}" type="tel" class="form-control" id="contact" placeholder="Contact"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label for="city">City</label>
-                    <input th:field="*{city}" type="text" class="form-control" id="city" placeholder="City" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="state">State</label>
-                    <input th:field="*{state}" type="text" class="form-control" id="state" placeholder="State" required>
-                </div>
-
-                <!-- Optional -->
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <input th:field="*{address}" type="text" class="form-control" id="address" placeholder="Address">
-                </div>
-
-                <div class="form-group">
-                    <label for="pincode">Pincode</label>
-                    <input th:field="*{pincode}" type="number" class="form-control" id="pincode" placeholder="Pincode">
-                </div>
-
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="Check">
-                    <label class="form-check-label" for="Check">Agree to the Terms&amp;Conditions</label>
-                </div>
-
-                <button type="submit" class="btn btn-success d-block mx-auto">Register</button>
             </form>
         </div>
     </main>

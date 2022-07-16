@@ -1,39 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Successful Slot Booking</title>
     <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <script src="/js/success.js" defer></script>
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="card border-success mb-3" style="max-width: 38rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body text-success">
+
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
+    <div class="container success_container">
+        <div class="card border-success mb-3" style="max-width: 40rem;">
+            <!--<div class="card-header">Success</div-->
+            <div class="card-body text-success text-center">
                 <h1 class="card-title">Congratulations!</h1>
-                <p class="card-text">Your Slot for Donation has been Booked.</p>
+                <br>
+                <p class="card-text" style="font-size: 1.2rem;">Thank you for being a hero for somebody and helping us
+                    save lives. Your Slot for
+                    Blood Donation has been Booked.</p>
             </div>
 
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card" style="width: 100%; border: none; padding: 0.5%; font-weight: 600;">
+                <img src="/icons/blood-transfusion.png" alt="Success tick" style="height: 7rem; margin:0 auto;">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <h5 class="card-title" style="font-size: 1.15rem; margin: 0;">Donation Slot details:</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
+
+                    <li class="list-group-item">
+                        <span>Name : </span>
+                        <span th:text="${data.getUserId().getName()}" style="text-transform: capitalize;"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Blood Group :</span>
+                        <span th:text="${data.getBlood_group()}"></span>
+                    </li>
+
+                    <li class="list-group-item">
+                        <span>Center :</span>
+                        <span th:text="${data.getDonationCenter().getName()}"></span>
+
+                    </li>
+
+                    <li class="list-group-item">
+                        <span>City :</span>
+                        <span th:text="${data.getDonationCenter().getCity().getCity()}"></span>
+                    </li>
+
+                    <li class="list-group-item">
+                        <span>Date :</span>
+                        <span th:text="${date}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Status :</span>
+                        <th:block th:switch="${data.getStatus()}">
+                            <span th:case="pending" class="text-warning">Pending</span>
+                            <span th:case="completed" class="text-success">Completed</span>
+                            <span th:case="*" th:text="${data.getStatus()}"></span>
+                        </th:block>
+                    </li>
                 </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Download link</a>
-                    <a href="#" class="card-link">Back to Dashboard</a>
+                <div class="card-body" style="display: flex; justify-content: center;">
+                    <button id="print-btn" class="btn nav-button mx-2">
+                        <a>Print</a>
+                    </button>
+                    <button class="btn nav-button">
+                        <a href="/home" class="card-link">Back to Home</a>
+                    </button>
                 </div>
             </div>
         </div>

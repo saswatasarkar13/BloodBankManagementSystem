@@ -3,11 +3,19 @@
 
 <th:block th:fragment="common">
 
-    <!-- Bootstrap css -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" <!-- Bootstrap css -->
     <link th:href="@{/lib/bootstrap-5/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Common css -->
     <link th:href="@{/css/common.css}" rel="stylesheet">
+
+    <!-- Nav css -->
+    <link th:href="@{/css/nav.css}" rel="stylesheet">
+
+    <!-- Footer css -->
     <link th:href="@{/css/footer.css}" rel="stylesheet">
 
     <!-- jQuery -->
@@ -18,4 +26,6 @@
 
     <!-- Sweet-alert -->
     <script th:src="@{/lib/sweetalert.min.js}"></script>
+
+    <script th:src="@{/js/nav.js}"></script>
 </th:block>

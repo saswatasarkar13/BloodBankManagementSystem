@@ -1,5 +1,6 @@
 package com.spring.springboot.controllers;
 
+import java.util.Date;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,7 @@ public class ProcureBloodController {
             return "/procure/form";
         }
 
-        return "redirect:/procure/success" + Long.toString(obj.getId());
+        return "redirect:/procure/success/" + Long.toString(obj.getId());
     }
 
     @RequestMapping (value = "/procure/success/{id}")
@@ -82,7 +83,14 @@ public class ProcureBloodController {
         ProcureBlood procureBlood = this.procureBloodService.findById(procureId);
         if (procureBlood == null)
             return "redirect:/procure";
-        return "/procure/success";
+        else
+        {
+            Date date = procureBlood.getDate();
+            String newDate = date.toString().substring(0, 11);
+            model.addAttribute("date", newDate);
+            return "/procure/success";
+        }    
+        
     }
     
 

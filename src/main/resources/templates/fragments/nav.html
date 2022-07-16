@@ -5,8 +5,11 @@
 <th:block th:fragment="navbar">
     <!-- top navigation -->
     <nav>
-        <div>
-            <h2 class="text-white">Blood Bank</h2>
+        <div class="logo_container">
+            <a href="/">
+                <img src="/icons/blood-donation.png" alt="" width="40" height="40">
+                <h2 class="text-white m-0">Blood Bank</h2>
+            </a>
         </div>
         <ul>
             <li>
@@ -18,14 +21,18 @@
             <li>
                 <a href="/procure">Procure Blood</a>
             </li>
-            <li>
-                <a href="/profile">Profile</a>
-            </li>
         </ul>
 
+        <div id="profile-btn" class="nav_username">
+            <img src="/icons/donor.png" alt="" width="30" height="30">
+            <a href="/profile">Profile</a>
+        </div>
+
         <div>
-            <button class="btn text-white btn-color mx-2">Register</button>
-            <button class="btn text-white btn-color">Login</button>
+            <a href="/user/form" id="register-btn" class="btn text-white btn-color mx-2">Register</a>
+            <a href="/login" id="login-btn" class="btn text-white btn-color">Login</a>
+
+            <a href="/logout" id="logout-btn" class="btn text-white btn-color">Logout</a>
         </div>
     </nav>
     <!-- /top navigation -->

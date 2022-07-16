@@ -11,30 +11,47 @@
 </head>
 
 <body>
-    <main class="container">
-        <h1>Donation korbo re</h1>
-        <form th:action="@{/donation/add}" method="post" th:object="${donation}">
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
+    <main class="container"
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h3>Thank you for saving lives by Donating Blood</h3>
+        <br>
+        <br>
+        <form th:action="@{/donation/add}" method="post" th:object="${donation}" style="width: 400px;">
             <!--${variable from controller}      @{where i want to send after the form is submitted}-->
 
             <div class="form-group">
-                <label for="date">Date of Blood Donation:</label>
+                <label for="date">Please enter your desired Date for blood donation:</label>
                 <input th:field="*{date}" type="date" class="form-control" id="date"
                     placeholder="Date of Blood Requirement" required>
             </div>
 
+            <br>
+
             <div class="form-group">
-                <label for="donation-centre-selectbox">Center:</label>
+                <label for="donation-centre-selectbox">Please choose your desired Center for blood donation:</label>
                 <select th:field="*{donationCenter}" class="form-control" id="donatio-centre-selectbox" required>
                     <option th:each="c : ${donation_centers.entrySet()}" th:value="${c.getKey()}"
                         th:text="${c.getValue()}">
                     </option>
                 </select>
             </div>
-            <br></br>
 
-            <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+            <br>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="Check">
+                <label class="form-check-label" for="Check">Agree to the Terms &amp; Conditions</label>
+            </div>
+            <br>
+
+            <button type="submit" class="btn nav-button">Submit</button>
         </form>
     </main>
+
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+
 </body>
 
 </html>

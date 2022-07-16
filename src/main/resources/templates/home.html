@@ -1,51 +1,30 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"
->
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <th:block th:replace="fragments/lib :: common"></th:block>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+
+  <th:block th:replace="fragments/lib :: common"></th:block>
+
+  <link th:href="@{/css/home.css}" rel="stylesheet">
 </head>
 
 <body>
-    <th:block th:replace="fragments/nav :: navbar"></th:block>
+  <th:block th:replace="fragments/nav :: navbar"></th:block>
 
   <body>
     <main class="container">
-     
-
-      <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -58,27 +37,23 @@
             <img src="image/image6.png" class="d-block w-100" alt="..." />
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev"
-        >
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next"
-        >
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
 
+
       <div class="blood_list_table_container">
+        <h2 class="text-center m-0">Availability</h2>
+        <hr style="background-color: gray; width: 100%;">
+
         <table class="blood_list_table">
           <thead>
             <th>City &#8595; / BloodGroup &#8594;</th>
@@ -93,22 +68,10 @@
 
               <th:block th:each="mapEntry : ${item.getValue().entrySet()}">
                 <th:block th:with="value=${mapEntry.getValue()}">
-                  <td
-                    th:if="${value == 0}"
-                    class="bg-red"
-                    th:text="${value}"
-                  ></td>
+                  <td th:if="${value == 0}" class="bg-red" th:text="${value}"></td>
                   <th:block th:unless="${value == 0}">
-                    <td
-                      th:if="${value > 10}"
-                      class="bg-green"
-                      th:text="${value}"
-                    ></td>
-                    <td
-                      th:unless="${value > 10}"
-                      class="bg-yellow"
-                      th:text="${value}"
-                    ></td>
+                    <td th:if="${value > 10}" class="bg-green" th:text="${value}"></td>
+                    <td th:unless="${value > 10}" class="bg-yellow" th:text="${value}"></td>
                   </th:block>
                 </th:block>
               </th:block>
@@ -117,13 +80,10 @@
         </table>
       </div>
 
-      <table class="content-table">
+      <table class="content-table w-100">
         <thead>
           <tr>
             <th colspan="3">Compatible Blood Type Donors:</th>
-            <!--- <th>Blood Type</th>
-                <th>Donate Blood to</th>
-                <th>Receive blood from</th>-->
           </tr>
         </thead>
         <tbody>
@@ -185,10 +145,10 @@
           determines the best donation for you to make. For plasma and platelet
           donation you must have donated whole blood in past two years.
         </p>
-        <div class="mx-auto button-container" >
-        <button class="btn btn-danger mx-2 ">Need Blood?</button>
-        <button class="btn btn-danger  ">Donate Blood</button>
-      </div>
+        <div class="mx-auto button-container">
+          <a href="/procure" class="btn btn-danger mx-2">Need Blood?</a>
+          <a href="/donation" class="btn btn-danger">Donate Blood</a>
+        </div>
       </div>
     </main>
     <th:block th:replace="fragments/footer :: footer"></th:block>

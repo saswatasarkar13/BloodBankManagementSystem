@@ -30,6 +30,11 @@ public class User {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "gender", nullable = false)
+    private String gender;
+
+    private String dp;
+
     @Column(name = "email", nullable = false)
     private String email;
 
@@ -76,10 +81,11 @@ public class User {
         // default constructor
     }
 
-    public User(Long id, String name, String email, String password, String contact, String blood_group, Date dob,
-            String city, String state, String address, Integer pincode, boolean isActivelyDonating) {
-        this.id = id;
+    public User(String name, String gender, String dp, String email, String password, String contact,
+            String blood_group, Date dob, String city, String state, String address, Integer pincode) {
         this.name = name;
+        this.gender = gender;
+        this.dp = dp;
         this.email = email;
         this.password = password;
         this.contact = contact;
@@ -89,7 +95,6 @@ public class User {
         this.state = state;
         this.address = address;
         this.pincode = pincode;
-        this.isActivelyDonating = isActivelyDonating;
     }
 
     public Long getId() {
@@ -138,6 +143,22 @@ public class User {
 
     public void setBlood_group(String blood_group) {
         this.blood_group = blood_group;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDp() {
+        return dp;
+    }
+
+    public void setDp(String dp) {
+        this.dp = dp;
     }
 
     public Date getDob() {
