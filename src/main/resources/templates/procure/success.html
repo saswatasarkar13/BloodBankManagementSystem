@@ -32,6 +32,12 @@
                         <span>Blood Group :</span>
                         <span th:text="${data.getBlood_group()}"></span>
                     </li>
+
+                    <li class="list-group-item">
+                        <span>Quantity :</span>
+                        <span th:text="${data.getQuantity()}"></span>
+                    </li>
+
                     <li class="list-group-item">
                         <span>Status :</span>
                         <th:block th:switch="${data.getStatus()}">
@@ -42,7 +48,7 @@
                         </th:block>
                     </li>
                 </ul>
-
+                <hr class="mt-0">
                 <div class="mx-3">
                     <p class="m-0">Available Centers: </p>
                     <th:block th:each="c : ${centers}">
@@ -52,24 +58,21 @@
                         </p>
                     </th:block>
                 </div>
-
-
-                <div class="card-body" style="display: flex; justify-content: center;">
-                    <button id="print-btn" class="btn nav-button mx-2">
-                        <a>Print</a>
-                    </button>
-                    <button class="btn nav-button">
-                        <a href="/home" class="card-link">Cancel</a>
-                    </button>
-                </div>
             </div>
         </div>
+        <div>
+            <div class="card-body" style="display: flex; justify-content: center;">
+                <button id="print-btn" class="btn nav-button mx-2">
+                    <a>Print</a>
+                </button>
+                <button class="btn nav-button">
+                    <a href="/home" class="card-link">Cancel</a>
+                </button>
 
-        <!-- <div>
             <button class="btn home-button">
                 <a href="/home" class="card-link">Back to Home</a>
             </button>
-        </div> -->
+        </div>
 
 </body>
 
