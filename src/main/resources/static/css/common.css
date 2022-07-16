@@ -74,3 +74,26 @@ body main {
   top: 20px;
   right: 20px;
 }
+
+.home-button
+{
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem 2%;
+  margin: 0 auto;
+  display: block;
+  background-color: var(--theme-red);
+  text-decoration: none !important;
+  color: #ffffff;
+  font-weight: bolder;
+  transition: all 0.7s;
+}
+.home-button a {
+  text-decoration: none !important;
+  color: #ffffff;
+}
+.home-button:hover {
+  background-color: var(--theme-green);
+  color: #ffffff;
+  transform: scale(1.05);
+}
