@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.springboot.common.Constants;
 import com.spring.springboot.helpers.Encryption;
+import com.spring.springboot.models.Donation;
 import com.spring.springboot.models.User;
 import com.spring.springboot.services.DonationService;
 import com.spring.springboot.services.ProcureBloodService;
@@ -67,13 +68,15 @@ public class UserContoller {
         try {
             if (!id.equals("")) {
                 Long userId = Long.parseLong(id);
-
+                System.out.println(id);
                 User user = this.userService.findById(userId);
                 model.addAttribute("user", user);
+                
+                System.out.println(user.getDonations());
+                 
+                model.addAttribute("donations", user.getDonations());
 
-                // model.addAttribute("donations", this.donationService.getAllByUserId(userId));
-
-                // model.addAttribute("procureBloods", this.procureBloodService.getAllByUserId(userId));
+                model.addAttribute("procureBloods", user.getProcureBlood());
 
                 return "/user/profile";
             } else {
@@ -81,7 +84,8 @@ public class UserContoller {
             }
 
         } catch (Exception e) {
-            return "redirect:/user/form";
+            e.printStackTrace();
+            return "redirect:/home";
         }
 
     }

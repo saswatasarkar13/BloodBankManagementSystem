@@ -1,4 +1,5 @@
 package com.spring.springboot.apicontrollers;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ import com.spring.springboot.services.BloodAvailableService;
 import com.spring.springboot.services.DonationCenterService;
 
 @RestController
-@RequestMapping (value = "/api/donation/center")
+@RequestMapping(value = "/api/donation/center")
 public class DonationCenterApiController {
 
     @Autowired
@@ -23,22 +24,32 @@ public class DonationCenterApiController {
     @Autowired
     private BloodAvailableService bloodAvailableService;
 
-    @RequestMapping (value = "/", method = RequestMethod.POST)
-    public Map<String, Object> addDonationCenter(@RequestBody Map <String, String> body){
-        String city =body.get("city");
-        String name= body.get("name");
-        HashMap<String, Object> map = new HashMap<>();
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public Map<String, Object> addDonationCenter(@RequestBody Map<String, String> body) {
 
-        BloodAvailable cityB = this.bloodAvailableService.findByCity(city);
-        DonationCenter donationCenter = new DonationCenter(name, cityB);
-        DonationCenter dcStatus = this.donationCenterService.save(donationCenter);  
-        if (dcStatus == null)
-        {
-            map.put("success", false);
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            String city = body.get("city");
+            String name = body.get("name");
+            BloodAvailable cityB = this.bloodAvailableService.findByCity(city);
+            System.out.println(cityB);
+            DonationCenter donationCenter = new DonationCenter(name, cityB);
+            System.out.println(donationCenter);
+            DonationCenter dcStatus = this.donationCenterService.save(donationCenter);
+            if (dcStatus == null) {
+                 map.put("success", false);
+                 return map;
+             }
+            map.put("success", true);
+            return map;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            map.put("success",false);
             return map;
         }
-        map.put("success", true);
-        return map;
-    } 
-   
+
+    }
+
 }
