@@ -10,11 +10,8 @@
 </head>
 
 <body>
-    <!-- <th:block th:replace="fragments/nav :: navbar"></th:block> -->
-
     <div class="container success_container">
         <div class="card border-success mb-3" style="max-width: 60%;">
-            <!--<div class="card-header">Success</div-->
             <div class="card-body text-success text-center">
                 <h1 class="card-title">Congratulations!</h1>
                 <br>
@@ -29,9 +26,25 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <span>Date :</span>
-                        <span th:text="${date}"></span>
+                        <span th:text="${#dates.format(data.getDate(), 'dd-MMM-yyyy')}"></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Blood Group :</span>
+                        <span th:text="${data.getBlood_group()}"></span>
                     </li>
                 </ul>
+
+                <div class="mx-3">
+                    <p class="m-0">Available Centers: </p>
+                    <th:block th:each="c : ${centers}">
+                        <p>
+                            <span th:text="${c.getName()} + ', '"></span>
+                            <span th:text="${c.getCity().getCity()}"></span>
+                        </p>
+                    </th:block>
+                </div>
+
+
                 <div class="card-body" style="display: flex; justify-content: center;">
                     <button id="print-btn" class="btn nav-button mx-2">
                         <a>Print</a>

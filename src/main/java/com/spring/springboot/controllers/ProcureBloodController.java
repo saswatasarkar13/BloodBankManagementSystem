@@ -1,6 +1,5 @@
 package com.spring.springboot.controllers;
 
-import java.util.Date;
 import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import com.spring.springboot.models.BloodAvailable;
 import com.spring.springboot.models.ProcureBlood;
 import com.spring.springboot.models.User;
 import com.spring.springboot.services.BloodAvailableService;
+import com.spring.springboot.services.DonationCenterService;
 import com.spring.springboot.services.ProcureBloodService;
 import com.spring.springboot.services.UserService;
 
@@ -31,6 +31,9 @@ public class ProcureBloodController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DonationCenterService donationCenterService;
 
     @RequestMapping(value = "/procure", method = RequestMethod.GET)
     public String procureBloodHandler(Model model) {
@@ -59,7 +62,6 @@ public class ProcureBloodController {
         ProcureBlood obj1 = new ProcureBlood();
 
         BloodAvailable su = this.bloodAvailableService.findByCity(city);
-        System.out.println(su);
 
         model.addAttribute("bloodGroups", Constants.BLOOD_GROUPS);
         model.addAttribute("procure", obj1);
@@ -94,17 +96,19 @@ public class ProcureBloodController {
 
     @RequestMapping(value = "/procure/success/{id}")
     public String procureSuccessHandler(@PathVariable String id, Model model) {
+
         Long procureId = Long.parseLong(id);
         ProcureBlood procureBlood = this.procureBloodService.findById(procureId);
+
         if (procureBlood == null)
             return "redirect:/procure";
-        else {
-            Date date = procureBlood.getDate();
-            String newDate = date.toString().substring(0, 11);
-            model.addAttribute("date", newDate);
-            return "/procure/success";
-        }
 
+        model.addAttribute("data", procureBlood);
+
+        BloodAvailable ba = this.bloodAvailableService.findByCity(procureBlood.getCity());
+        model.addAttribute("centers", this.donationCenterService.findAllCentresByCity(ba));
+
+        return "/procure/success";
     }
 
 }
