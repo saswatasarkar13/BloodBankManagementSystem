@@ -1,5 +1,6 @@
 package com.spring.springboot.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,9 @@ public class DonationService {
         if (donation.isPresent())
             return donation.get();
         return null;
+    }
+
+    public List<Donation> getAllByUserId(Long userId){
+        return this.donationRepository.findAllByUserId(userId);
     }
 }

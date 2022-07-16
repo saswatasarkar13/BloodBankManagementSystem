@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.springboot.common.Constants;
 import com.spring.springboot.helpers.Encryption;
 import com.spring.springboot.models.User;
+import com.spring.springboot.services.DonationService;
+import com.spring.springboot.services.ProcureBloodService;
 import com.spring.springboot.services.UserService;
 
 @Controller
@@ -20,6 +23,10 @@ public class UserContoller {
     private UserService userService;
 
     private Encryption encryption;
+    @Autowired
+    private DonationService donationService;
+    @Autowired
+    private ProcureBloodService procureBloodService;
 
     UserContoller() {
         encryption = new Encryption();
@@ -55,9 +62,15 @@ public class UserContoller {
         return "redirect:/home";
     }
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String profilehandler() {
+    public String profilehandler(Model model,@CookieValue(name = "userid", defaultValue = "") String id) {
 
-        
+        Long userId = Long.parseLong(id);
+        User user = this.userService.findById(userId);
+        model.addAttribute("user", user);
+
+        model.addAttribute("donations", this.donationService.getAllByUserId(userId));
+
+        model.addAttribute("procureBloods", this.procureBloodService.getAllByUserId(userId));
 
         return "/user/profile";
     }
