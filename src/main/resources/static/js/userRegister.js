@@ -38,6 +38,6 @@ const onChangeHandler = async (event) => {
   }
 };
 
-editIcon.addEventListener("click", onClickHandler);
+if (editIcon) editIcon.addEventListener("click", onClickHandler);
 
-fileInput.addEventListener("change", onChangeHandler, false);
+if (fileInput) fileInput.addEventListener("change", onChangeHandler, false);
