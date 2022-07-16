@@ -11,11 +11,9 @@ import com.spring.springboot.models.Donation;
 
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
-    @Query ("SELECT dn FROM Donation dn WHERE dn.userId =:id")
-    public List<Donation> findByUserId(@Param("id") Long userId); 
-    
-    public Optional <Donation> findById(Long id);
-    
+    @Query("SELECT dn FROM Donation dn WHERE dn.userId =:id")
+    public List<Donation> findByUserId(@Param("id") Long userId);
+
+    public Optional<Donation> findById(Long id);
 
 }
-
