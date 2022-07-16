@@ -64,3 +64,6 @@ nav ul li a:hover {
   background: transparent;
   border: 1px solid rgb(243, 240, 240);
 }
+.btn-color:hover{
+  background-color: var(--theme-red);
+}
