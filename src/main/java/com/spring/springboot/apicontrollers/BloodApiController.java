@@ -48,17 +48,49 @@ public class BloodApiController {
             BloodGroupAvailable obj = new BloodGroupAvailable(blood_group, quantity, ob);
 
             BloodGroupAvailable result = bloodGroupAvaliableService.save(obj);
-            if (result!=null)
-            {   map.put("success", true);
-                return map;   
-            }
-            else
-            {map.put("success", false);
-            return map;    
+            if (result != null) {
+                map.put("success", true);
+                return map;
+            } else {
+                map.put("success", false);
+                return map;
             }
         } catch (Exception e) {
             map.put("success", false);
+            return map;
+        }
+    }
+
+    @RequestMapping(value = "/group", method = RequestMethod.PUT)
+    public Map<String, Object> updateBloodGroup(@RequestBody Map<String, String> payload) {
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+
+            String city = (String) payload.get("city");
+            String bloodGroup = (String) payload.get("bloodGroup");
+            Integer quantity = Integer.parseInt(payload.get("quantity"));
+
+            BloodAvailable ob = this.bloodAvailableService.findByCity(city);
+
+            BloodGroupAvailable obj = this.bloodGroupAvaliableService.findByCityAndBloodGroup(ob.getId(), bloodGroup);
+
+            System.out.println(obj);
+            obj.setQuantity(quantity);
+
+
+            BloodGroupAvailable result = bloodGroupAvaliableService.save(obj);
+
+            if (result != null) {
+                map.put("success", true);
                 return map;
+            }
+
+            map.put("success", false);
+            return map;
+
+        } catch (Exception e) {
+            map.put("success", false);
+            return map;
         }
     }
 }
