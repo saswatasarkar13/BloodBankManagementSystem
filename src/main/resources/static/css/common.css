@@ -65,14 +65,9 @@ body main {
   color: #ffffff;
   transform: scale(1.05);
 }
-.card-position{
-  position: relative;
 
-}
-.date{
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.bold {
+  font-weight: 600;
 }
 
 .home-button

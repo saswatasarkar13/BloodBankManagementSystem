@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.springboot.common.Constants;
 import com.spring.springboot.helpers.Encryption;
-import com.spring.springboot.models.Donation;
 import com.spring.springboot.models.User;
-import com.spring.springboot.services.DonationService;
-import com.spring.springboot.services.ProcureBloodService;
 import com.spring.springboot.services.UserService;
 
 @Controller
@@ -24,10 +21,6 @@ public class UserContoller {
     private UserService userService;
 
     private Encryption encryption;
-    @Autowired
-    private DonationService donationService;
-    @Autowired
-    private ProcureBloodService procureBloodService;
 
     UserContoller() {
         encryption = new Encryption();
@@ -71,9 +64,7 @@ public class UserContoller {
                 System.out.println(id);
                 User user = this.userService.findById(userId);
                 model.addAttribute("user", user);
-                
-                System.out.println(user.getDonations());
-                 
+
                 model.addAttribute("donations", user.getDonations());
 
                 model.addAttribute("procureBloods", user.getProcureBlood());
