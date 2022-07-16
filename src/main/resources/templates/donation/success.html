@@ -64,7 +64,7 @@
                             <span th:case="pending" class="text-warning">Pending</span>
                             <span th:case="completed" class="text-success">Completed</span>
                             <span th:case="cancelled" class="text-danger">Cancelled</span>
-                            <span th:case="*" th:text="${#strings.capitalize(p.getStatus())}"></span>
+                            <span th:case="*" th:text="${#strings.capitalize(data.getStatus())}"></span>
                         </th:block>
                     </li>
                 </ul>

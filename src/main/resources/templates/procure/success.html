@@ -32,6 +32,15 @@
                         <span>Blood Group :</span>
                         <span th:text="${data.getBlood_group()}"></span>
                     </li>
+                    <li class="list-group-item">
+                        <span>Status :</span>
+                        <th:block th:switch="${data.getStatus()}">
+                            <span th:case="pending" class="text-warning">Pending</span>
+                            <span th:case="completed" class="text-success">Completed</span>
+                            <span th:case="cancelled" class="text-danger">Cancelled</span>
+                            <span th:case="*" th:text="${#strings.capitalize(data.getStatus())}"></span>
+                        </th:block>
+                    </li>
                 </ul>
 
                 <div class="mx-3">
@@ -56,11 +65,11 @@
             </div>
         </div>
 
-        <div>
+        <!-- <div>
             <button class="btn home-button">
                 <a href="/home" class="card-link">Back to Home</a>
             </button>
-        </div>
+        </div> -->
 
 </body>
 
