@@ -66,9 +66,10 @@ nav ul li a:hover {
 .btn-color {
   background: transparent;
   border: 1px solid rgb(243, 240, 240);
+  transition: all 0.7s;
 }
 .btn-color:hover{
   color: rgb(128, 9, 9) !important;
   background-color: #ffffff;
-  font-weight: bold;
+  font-weight: bolder;
 }
