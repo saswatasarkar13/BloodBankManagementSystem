@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.springboot.models.User;
 import com.spring.springboot.services.UserService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping(value = "/api/user")
@@ -44,7 +45,7 @@ public class UserApiController {
     }
 
     @RequestMapping(value = "/active-donation-status", method = RequestMethod.PUT)
-    public Map<String, Object> updateActivelyDonationg(@RequestBody Map<String, Object> payload) {
+    public Map<String, Object> updateActivelyDonating(@RequestBody Map<String, Object> payload) {
         HashMap<String, Object> map = new HashMap<>();
 
         try {
@@ -70,4 +71,32 @@ public class UserApiController {
 
     }
 
+    @RequestMapping (value = "/admin" ,method = RequestMethod.PUT)
+    public Map<String,Object> isAdmin(@RequestBody Map<String, Object> payload)
+    {
+        HashMap<String, Object> map = new HashMap<>();
+        try {
+            String uId = (String) payload.get("id");
+            Boolean adminStatus = (Boolean) payload.get("status");
+
+            User user = this.userService.findById(Long.parseLong(uId));
+            user.setAdmin(adminStatus);
+
+            User result = this.userService.save(user);
+            if (result == null) {
+                map.put("success", false);
+                return map;
+            }
+            map.put("success", true);
+            return map;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("success", false);
+            return map;
+        }
+        }
+
 }
+
+
