@@ -1,8 +1,11 @@
 package com.spring.springboot.helpers;
 
+import org.springframework.stereotype.Component;
+
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import at.favre.lib.crypto.bcrypt.BCrypt.Version;
 
+@Component
 public class Encryption {
     private static final int COST_FACTOR = 6;
     private final BCrypt.Hasher hasher = BCrypt.with(Version.VERSION_2Y);

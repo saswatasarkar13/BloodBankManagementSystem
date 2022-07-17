@@ -27,3 +27,21 @@
 .text-gray {
   color: gray !important;
 }
+
+.achievements_list{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.achievements_list li{
+  cursor: pointer;
+}
+
+.achievements_list li:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.image_badge_container{
+  padding: 0 1rem;
+}

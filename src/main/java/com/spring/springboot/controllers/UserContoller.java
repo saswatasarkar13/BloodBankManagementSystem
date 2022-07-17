@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.springboot.common.Constants;
+import com.spring.springboot.helpers.Achievement;
 import com.spring.springboot.helpers.Encryption;
 import com.spring.springboot.models.User;
 import com.spring.springboot.services.UserService;
@@ -20,11 +21,11 @@ public class UserContoller {
     @Autowired
     private UserService userService;
 
-    private Encryption encryption;
+    @Autowired
+    private Achievement achievementHelper;
 
-    UserContoller() {
-        encryption = new Encryption();
-    }
+    @Autowired
+    private Encryption encryption;
 
     @RequestMapping(value = "/user/form", method = RequestMethod.GET)
     public String userRegister(Model model) {
@@ -59,20 +60,19 @@ public class UserContoller {
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String profilehandler(Model model, @CookieValue(name = "userid", defaultValue = "") String id) {
         try {
-            if (!id.equals("")) {
-                Long userId = Long.parseLong(id);
-                System.out.println(id);
-                User user = this.userService.findById(userId);
-                model.addAttribute("user", user);
-
-                model.addAttribute("donations", user.getDonations());
-
-                model.addAttribute("procureBloods", user.getProcureBlood());
-
-                return "/user/profile";
-            } else {
+            if (id.equals(""))
                 return "redirect:/home";
-            }
+
+            Long userId = Long.parseLong(id);
+
+            User user = this.userService.findById(userId);
+
+            model.addAttribute("user", user);
+            model.addAttribute("donations", user.getDonations());
+            model.addAttribute("procureBloods", user.getProcureBlood());
+            model.addAttribute("achievements", this.achievementHelper.getAchievements(user));
+
+            return "/user/profile";
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
+import org.springframework.stereotype.Component;
+
 import com.spring.springboot.common.Constants;
 import com.spring.springboot.models.BloodAvailable;
 import com.spring.springboot.models.BloodGroupAvailable;
 
+@Component
 public class BloodTable {
 
     public TreeMap<String, Integer> getBloodQuantityList(List<BloodGroupAvailable> list) {

@@ -24,11 +24,8 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
     private BloodTable helpers;
-
-    HomeController() {
-        this.helpers = new BloodTable();
-    }
 
     @RequestMapping(value = { "/", "/home" })
     public String index(Model model, @CookieValue(name = "userid", defaultValue = "") String userId) {

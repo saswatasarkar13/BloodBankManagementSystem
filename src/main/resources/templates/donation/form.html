@@ -16,7 +16,8 @@
     <main class="container"
         style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <h3>Thank you for saving lives by Donating Blood</h3>
-        <br>
+        <p class="text-danger">* You must not have donated blood in the last 120 days. *</p>
+
         <br>
         <form th:action="@{/donation/add}" method="post" th:object="${donation}" style="width: 400px;">
             <!--${variable from controller}      @{where i want to send after the form is submitted}-->
