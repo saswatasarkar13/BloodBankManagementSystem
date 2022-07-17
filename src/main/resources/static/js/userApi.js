@@ -41,6 +41,9 @@ const updateDonateStatus = (data) => {
   const reqOptions = {
     method: "PUT",
     body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
 
   fetch(`${API_URL}/user/active-donation-status`, reqOptions);
