@@ -33,4 +33,8 @@ public class DonationService {
     public Long getCount() {
         return this.donationRepository.count();
     }
+
+    public List<Donation> getAllPendingDonations() {
+        return this.donationRepository.findAllPendingDonations();
+    }
 }

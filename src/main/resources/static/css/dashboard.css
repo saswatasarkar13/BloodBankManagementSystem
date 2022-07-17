@@ -9,7 +9,13 @@
 
 main {
   background-color: #f2f2f2;
-  padding: 2rem 1rem 0 1rem;
+  padding: 1rem;
+  overflow: scroll;
+  height: calc(100vh - 72px);;
+}
+
+main::-webkit-scrollbar{
+  display: none;
 }
 
 aside {
@@ -26,22 +32,33 @@ aside > ul {
 }
 
 aside > ul > li {
-  padding: 0.8rem 0 0.8rem 2rem;
   cursor: pointer;
 }
 
-aside > ul > li:hover {
+aside > ul > .hover:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.blood-availability-aside:hover {
-  background-color: initial;
-}
 
-aside > ul > li a {
+aside > ul > li > a {
+  padding: 0.8rem 0 0.8rem 2rem;
+  display: block;
   text-decoration: none !important;
   color: black !important;
   font-weight: 600;
+}
+
+.blood-centers-aside{
+  padding: 0.8rem 0 0.8rem 2rem;
+}
+
+.blood-availability-aside{
+  padding: 0.8rem 0 0.8rem 2rem;
+}
+
+.blood-availability-aside a {
+  text-decoration: none !important;
+  color: black !important;
 }
 
 .stats .card {
@@ -77,4 +94,10 @@ aside > ul > li a {
   border: 1px solid black;
   border-collapse: separate;
   text-align: center;
+}
+
+.grid_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
 }

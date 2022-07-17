@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<th:block th:fragment="side-menu">
+    <!-- Aside menu -->
+    <aside class="col-lg-2">
+        <ul>
+            <li class="hover">
+                <a href="/dashboard">Dashboard</a>
+            </li>
+            <li class="hover">
+                <a href="/procure/list">Procures</a>
+            </li>
+            <li class="hover">
+                <a href="/donation/list">Donations</a>
+            </li>
+
+            <li class="hover">
+                <a href="#">Users</a>
+            </li>
+
+            <li class="blood-centers-aside">
+                <p class="bold mb-1">Blood Centers</p>
+                <p class="mx-3 my-0 text-gray">
+                    <span>+ Add</span>
+                    <br>
+                    <span>+ List</span>
+                </p>
+            </li>
+
+            <th:block th:if="${blood_list != null}">
+                <li class="blood-availability-aside">
+                    <p class="bold mb-1">Blood Availability</p>
+                    <ul th:each="c : ${blood_list.entrySet()}">
+                        <li>
+                            <a href="#" th:text="${c.getKey()}"></a>
+                        </li>
+                    </ul>
+                </li>
+            </th:block>
+        </ul>
+    </aside>
+
+</th:block>
+
+</html>

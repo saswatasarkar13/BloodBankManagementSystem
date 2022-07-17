@@ -58,4 +58,20 @@ public class AdminController {
 
         return "/admin/dashboard";
     }
+
+    @RequestMapping(value = "/donation/list")
+    public String donationsHandler(Model model) {
+
+        model.addAttribute("list", this.donationService.getAllPendingDonations());
+
+        return "/donation/list";
+    }
+
+    @RequestMapping(value = "/procure/list")
+    public String procuresHandler(Model model) {
+
+        model.addAttribute("list", this.procureBloodService.getAllPendingDonations());
+
+        return "/procure/list";
+    }
 }

@@ -19,37 +19,10 @@
 
     <div class="w-100 container-fluid root">
         <div class="row">
-            <aside class="col-lg-2">
-                <ul>
-                    <li>
-                        <a href="/dashboard">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#">Procures</a>
-                    </li>
-                    <li>
-                        <a href="#">Donations</a>
-                    </li>
-                    <li>
-                        <a href="#">Blood Centers</a>
-                    </li>
-                    <li>
-                        <a href="#">Users</a>
-                    </li>
+            <th:block th:replace="fragments/admin :: side-menu"></th:block>
 
-                    <li class="blood-availability-aside">
-                        <p class="bold text-gray">Blood Availability</p>
-                        <ul th:each="c : ${blood_list.entrySet()}">
-                            <li>
-                                <a href="#" th:text="${c.getKey()}"></a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </aside>
-
-            <main class="col-lg-10 container stats">
-                <div class="row">
+            <main class="col-lg-10 container">
+                <div class="row stats">
                     <div class="col" th:each="s : ${stats.entrySet()}">
                         <div class="card">
                             <div class="card-body">

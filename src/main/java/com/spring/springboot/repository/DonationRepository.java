@@ -14,6 +14,9 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query("SELECT dn FROM Donation dn WHERE dn.userId =:id")
     public List<Donation> findAllByUserId(@Param("id") Long userId);
 
+    @Query("SELECT dn FROM Donation dn WHERE dn.status ='pending'")
+    public List<Donation> findAllPendingDonations();
+
     public Optional<Donation> findById(Long id);
 
 }

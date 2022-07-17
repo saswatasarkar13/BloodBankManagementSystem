@@ -34,4 +34,8 @@ public class ProcureBloodService {
     public Long getCount() {
         return this.procureBloodRepository.count();
     }
+
+    public List<ProcureBlood> getAllPendingDonations() {
+        return this.procureBloodRepository.findAllPendingDonations();
+    }
 }
