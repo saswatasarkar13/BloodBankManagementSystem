@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.springboot.models.Donation;
 import com.spring.springboot.models.User;
-import com.spring.springboot.services.DonationService;
 import com.spring.springboot.services.UserService;
 
 @RestController
