@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.springboot.common.Constants;
@@ -95,5 +96,25 @@ public class AdminController {
         model.addAttribute("list", list);
 
         return "/admin/bloodTable";
+    }
+
+    @RequestMapping(value = "/user/search", method = RequestMethod.GET)
+    public String searchUser(@RequestParam(required = false, name = "q") String keyword, Model model) {
+        
+        List<BloodAvailable> blood_list = bloodAvailableService.getAll();
+        model.addAttribute("blood_list", this.helpers.getList(blood_list));
+
+        if (keyword == null)
+            return "/user/list";
+
+        try {
+            model.addAttribute("users", this.userService.searchUser(keyword));
+            return "/user/list";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return "/user/list";
+        }
     }
 }

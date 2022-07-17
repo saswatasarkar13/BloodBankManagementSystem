@@ -6,20 +6,106 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
+
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
 </head>
 
 <body>
-    <h1>This is users page</h1>
 
-    <ul th:each="u : ${users}">
-        <li>
-            Id = <span th:text="${u.getId()}"></span>
-            <br>
-            Name = <span th:text="${u.getName()}"></span>
-            <br>
-            Email = <span th:text="${u.getEmail()}"></span>
-        </li>
-    </ul>
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
+    <div class="w-100 container-fluid root">
+        <div class="row">
+            <th:block th:replace="fragments/admin :: side-menu"></th:block>
+
+            <main class="col-lg-10 container">
+                <div class="px-2 w-75 mx-auto">
+                    <form th:action="@{/user/search}" method="get">
+                        <div class="input-group md-form form-sm form-2 pl-0">
+                            <input name="q" class="form-control my-0 py-1 red-border" type="text" placeholder="Search"
+                                aria-label="Search">
+                            <div class="input-group-append">
+                                <span class="input-group-text red lighten-3 h-100" id="basic-text1">
+                                    <i class="fas fa-search text-grey" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <hr>
+
+                <div class="grid_list">
+                    <th:block th:each="item : ${users}">
+                        <div class="card">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="px-2 d-flex flex-column align-items-center justify-content-center">
+                                    <th:block th:if="${item.getDp() == null}">
+                                        <img th:src="'https://avatars.dicebear.com/api/initials/' + ${#strings.replace(item.getName(), ' ', '+')} + '.svg'"
+                                            alt="avatar" class="rounded-circle" width="80" height="80"
+                                            style="object-fit: cover;">
+                                    </th:block>
+
+                                    <th:block th:unless="${item.getDp() == null}">
+                                        <img th:src="${item.getDp()}" alt="avatar" class="rounded-circle" width="80"
+                                            height="80" style="object-fit: cover;">
+                                    </th:block>
+
+                                    <br>
+                                    <p class="mb-0">
+                                        <span>Donations: </span>
+                                        <span class="text-danger bold" th:text="${item.getDonations().size()}"></span>
+                                        <br>
+                                        <span>Procures: </span>
+                                        <span class="text-success bold"
+                                            th:text="${item.getProcureBlood().size()}"></span>
+                                    </p>
+                                </div>
+
+                                <div class="flex-grow-1" style="padding-left: 2rem;">
+                                    <h5 class="card-title" th:text="${item.getName()}"></h5>
+
+                                    <p class="card-text">
+                                        <span class="text-gray" th:text="${item.getEmail()}"></span>
+                                        <br>
+                                        <span class="text-gray" th:text="${item.getContact()}"></span>
+                                        <br>
+                                        <span>Blood Group : </span>
+                                        <span class="bold" th:text="${item.getBlood_group()}"></span>
+                                        <br>
+                                        <span>DOB : </span>
+                                        <span th:text="${#dates.format(item.getDob(), 'dd-MMM-yyyy')}"></span>
+                                        <br>
+                                        <span>City : </span>
+                                        <span th:text="${item.getCity()}"></span>
+                                        <br>
+
+                                        <th:block th:if="${item.getAddress() != null}">
+                                            <span th:text="${item.getAddress()}"></span>
+                                            <br>
+                                        </th:block>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 pb-3 d-flex justify-content-center align-items-center">
+                                <button th:if="${item.isAdmin()}" class=" btn btn-outline-danger">Remove Admin</button>
+
+                                <button th:unless="${item.isAdmin()}" class="btn btn-outline-success mx-2">
+                                    Make Admin
+                                </button>
+                            </div>
+
+                        </div>
+                    </th:block>
+                </div>
+
+            </main>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -70,9 +70,8 @@ public class UserApiController {
 
     }
 
-    @RequestMapping (value = "/admin" ,method = RequestMethod.PUT)
-    public Map<String,Object> isAdmin(@RequestBody Map<String, Object> payload)
-    {
+    @RequestMapping(value = "/admin", method = RequestMethod.PUT)
+    public Map<String, Object> isAdmin(@RequestBody Map<String, Object> payload) {
         HashMap<String, Object> map = new HashMap<>();
         try {
             String uId = (String) payload.get("id");
@@ -88,14 +87,11 @@ public class UserApiController {
             }
             map.put("success", true);
             return map;
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             map.put("success", false);
             return map;
         }
-        }
-
+    }
 }
-
-

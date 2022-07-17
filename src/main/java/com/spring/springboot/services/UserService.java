@@ -44,4 +44,8 @@ public class UserService {
     public Long getActiveDonorsCount() {
         return this.userRepository.findActiveDonors();
     }
+
+    public List<User> searchUser(String keyword) {
+        return this.userRepository.searchUser(keyword);
+    }
 }

@@ -21,4 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT count(u) FROM User u WHERE u.isActivelyDonating=true")
     public Long findActiveDonors();
+
+    @Query("SELECT u FROM User u WHERE CONCAT(u.name, u.email, u.contact) LIKE %?1%")
+    public List<User> searchUser(String keyword);
 }

@@ -78,6 +78,5 @@ public class UserContoller {
             e.printStackTrace();
             return "redirect:/home";
         }
-
     }
 }
