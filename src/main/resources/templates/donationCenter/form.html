@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Donation Center</title>
+
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+</head>
+
+<body>
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
+    <div class="w-100 container-fluid root">
+        <div class="row">
+            <th:block th:replace="fragments/admin :: side-menu"></th:block>
+
+            <main class="col-lg-10 container">
+                <h3 class="m-0">Add Donation Center</h3>
+                <hr class="mt-0">
+
+                <div class="procure_form_container">
+                    <form th:action="@{/donation/center/add}" method="post" th:object="${donationCenter}">
+
+                        <div>
+                            <th:block th:if="${error != null}">
+                                <p class="text-danger" th:text="${error}"></p>
+                            </th:block>
+                        </div>
+
+                        <div class="form-group" style="padding: 1%; margin: 1%;">
+                            <label for="name">Name : </label>
+                            <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Name of the center"
+                                required>
+                        </div>
+
+                        <div class="form-group" style="padding: 1%; margin: 1%;">
+                            <label for="city-selectbox">City : </label>
+                            <select th:field="*{city}" class="form-control" id="city-selectbox" required>
+                                <option th:each="c : ${cityList}" th:value="${c.getCity().getId()}" th:text="${c.getCity().getCity()}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn nav-button">Submit</button>
+                    </form>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

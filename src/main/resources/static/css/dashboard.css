@@ -52,6 +52,11 @@ aside > ul > li > a {
   padding: 0.8rem 0 0.8rem 2rem;
 }
 
+.blood-centers-aside a{
+  text-decoration: none !important;
+  color: gray !important;
+}
+
 .blood-availability-aside{
   padding: 0.8rem 0 0.8rem 2rem;
 }
