@@ -26,16 +26,16 @@ body main {
 }
 
 .bg-red {
-  background-color: rgba(255, 10, 10, 0.6);
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
 .bg-green {
-  background-color: green;
+  background-color: #30ae2ec2;
   color: white;
 }
 
 .bg-yellow {
-  background-color: yellow;
+  background-color: rgba(255, 255, 0, 0.5);
 }
 
 .text-gray {
@@ -56,7 +56,7 @@ body main {
   background-color: var(--theme-red);
   color: #ffffff;
   font-weight: bolder;
-  transition: all 0.7s;
+  transition: all 0.3s;
 }
 
 .nav-button a {

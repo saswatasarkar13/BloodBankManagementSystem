@@ -2,7 +2,7 @@ nav {
   display: flex;
   align-items: center;
   padding: 1rem 5%;
-  background-color: #a53630;
+  background-color: #b6342d;
   position: sticky;
   top: 0;
   z-index: 99;
@@ -31,6 +31,9 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #000;
+  /*background-color: #cc5d57;*/
+  font-weight: bolder;
+  font-size: 110%;
 }
 
 .nav_username {
@@ -63,9 +66,12 @@ nav ul li a:hover {
 .btn-color {
   background: transparent;
   border: 1px solid rgb(243, 240, 240);
+  transition: all 0.7s;
 }
 .btn-color:hover{
-  background-color: var(--theme-red);
+  color: rgb(128, 9, 9) !important;
+  background-color: #ffffff;
+  font-weight: bolder;
 }
 
 #nav-dashboard-li{
