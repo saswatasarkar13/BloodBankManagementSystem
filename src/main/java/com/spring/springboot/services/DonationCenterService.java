@@ -30,4 +30,8 @@ public class DonationCenterService {
         return this.donationCenterRepository.count();
     }
 
+    public void delete(Long id) {
+        this.donationCenterRepository.deleteById(id);
+    }
+
 }

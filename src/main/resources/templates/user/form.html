@@ -23,6 +23,13 @@
 
         <div class="form_container">
             <form th:action="@{/user/add}" method="post" th:object="${user}">
+
+                <div>
+                    <th:block th:if="${error != null}">
+                        <p class="text-danger bold text-center w-100" th:text="'* '+${error}+' *'"></p>
+                    </th:block>
+                </div>
+
                 <div>
                     <div>
 

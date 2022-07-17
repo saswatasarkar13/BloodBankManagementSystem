@@ -1,3 +1,12 @@
+main {
+  min-height: calc(100vh - 75px);
+  display: flex;
+}
+
+main > section {
+  flex-grow: 1;
+}
+
 .item_anchor_container {
   text-decoration: none !important;
 }
@@ -24,20 +33,20 @@
   border: none;
 }
 
-.achievements_list{
+.achievements_list {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.achievements_list li{
+.achievements_list li {
   cursor: pointer;
 }
 
-.achievements_list li:hover{
+.achievements_list li:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.image_badge_container{
+.image_badge_container {
   padding: 0 1rem;
 }

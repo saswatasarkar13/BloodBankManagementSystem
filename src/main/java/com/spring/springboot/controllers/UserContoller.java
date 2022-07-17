@@ -45,16 +45,47 @@ public class UserContoller {
     }
 
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
-    public String addUser(User user) {
+    public String addUser(User user, Model model) {
 
-        // hashing the password and storing
-        String plainPassword = user.getPassword();
-        String passwordHash = encryption.getEncryptedPassword(plainPassword);
-        user.setPassword(passwordHash);
+        boolean err = false;
+        String errMsg = "";
 
-        this.userService.save(user);
+        try {
+            String email = user.getEmail();
 
-        return "redirect:/login";
+            if (this.userService.findUserByEmail(email) != null) {
+                err = true;
+                errMsg = "Email already exists";
+            } else {
+
+                // hashing the password and storing
+                String plainPassword = user.getPassword();
+                String passwordHash = encryption.getEncryptedPassword(plainPassword);
+                user.setPassword(passwordHash);
+
+                User result = this.userService.save(user);
+                if (result == null) {
+                    err = true;
+                    errMsg = "Something went wrong!";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            err = true;
+            errMsg = "Something went wrong!";
+        }
+
+        if (err) {
+            model.addAttribute("user", new User());
+            model.addAttribute("bloodGroups", Constants.BLOOD_GROUPS);
+
+            model.addAttribute("error", errMsg);
+
+            return "/user/form";
+        }
+
+        return "redirect:/login?register=true";
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)

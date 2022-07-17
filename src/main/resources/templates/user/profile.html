@@ -18,224 +18,227 @@
 <body>
   <th:block th:replace="fragments/nav :: navbar"></th:block>
 
-  <section style="background-color: #eee;">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body text-center">
-              <th:block th:if="${user.getDp() == null}">
-                <img id="profile-photo"
-                  th:src="'https://avatars.dicebear.com/api/initials/' + ${#strings.replace(user.getName(), ' ', '+')} + '.svg'"
-                  alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
-              </th:block>
+  <main>
+    <section style="background-color: #eee;">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-body text-center">
 
-              <th:block th:unless="${user.getDp() == null}">
-                <img id="profile-photo" th:src="${user.getDp()}" alt="avatar" class="rounded-circle" width="150"
-                  height="150" style="object-fit: cover;">
-              </th:block>
-
-              <br><br>
-
-              <button class="btn btn-outline-primary" id="edit-photo-button">Edit Photo</button>
-              <input type="file" id="edit-photo-input" hidden>
-
-              <h5 class="my-3" th:text="${user.getName()}"></h5>
-              <p class="text-muted mb-1" th:text="${user.getEmail()}"></p>
-              <p class="text-muted mb-2" th:text="${user.getContact()}"></p>
-
-              <th:block th:if="${user.isActivelyDonating()}">
-                <button id="active-donate-btn" data-value="false" class="btn btn-outline-success">Actively
-                  Donating
-                </button>
-              </th:block>
-
-              <th:block th:unless="${user.isActivelyDonating()}">
-                <button id="active-donate-btn" data-value="true" class="btn btn-success">Start Actively
-                  Donating
-                </button>
-              </th:block>
-            </div>
-          </div>
-
-          <div class="card mb-4 mb-lg-0">
-            <div class="card-body p-0">
-              <h4 class="text-center pt-3">Achivements</h4>
-
-              <ul class="achievements_list" th:each="ac : ${achievements}">
-                <th:block th:switch="${ac}">
-                  <li th:case="pro-donate" class="d-flex py-2 px-0">
-                    <div class="image_badge_container">
-                      <img src="/icons/pro-donate.png" alt="" width="50" height="50">
-                    </div>
-                    <div>
-                      <p class="bold m-0">Pro-donate</p>
-                      <small class="text-gray">Donated blood 3+ times</small>
-                    </div>
-                  </li>
-
-                  <li th:case="active-donor" class="d-flex py-2 px-0">
-                    <div class="image_badge_container">
-                      <img src="/icons/active-blood-donation.png" alt="" width="50" height="50">
-                    </div>
-                    <div>
-                      <p class="bold m-0">Active-Donor</p>
-                      <small class="text-gray">Ready for Donating blood on need</small>
-                    </div>
-                  </li>
-
+                <th:block th:if="${#strings.isEmpty(user.getDp())}">
+                  <img id="profile-photo"
+                    th:src="'https://avatars.dicebear.com/api/initials/' + ${#strings.replace(user.getName(), ' ', '+')} + '.svg'"
+                    alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
                 </th:block>
-              </ul>
-            </div>
-          </div>
-        </div>
 
+                <th:block th:unless="${#strings.isEmpty(user.getDp())}">
+                  <img id="profile-photo" th:src="${user.getDp()}" alt="avatar" class="rounded-circle" width="150"
+                    height="150" style="object-fit: cover;">
+                </th:block>
 
-        <div class="col-lg-8">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Full Name</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0" th:text="${user.getName()}"></p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0" th:text="${user.getEmail()}"></p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Phone</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0" th:text="${user.getContact()}"></p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Date of Birth</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0" th:text="${#dates.format(user.getDob(), 'dd-MMM-yyyy')}"></p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Address</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0" th:text="${user.getAddress()}"></p>
-                </div>
+                <br><br>
+
+                <button class="btn btn-outline-primary" id="edit-photo-button">Edit Photo</button>
+                <input type="file" id="edit-photo-input" hidden>
+
+                <h5 class="my-3" th:text="${user.getName()}"></h5>
+                <p class="text-muted mb-1" th:text="${user.getEmail()}"></p>
+                <p class="text-muted mb-2" th:text="${user.getContact()}"></p>
+
+                <th:block th:if="${user.isActivelyDonating()}">
+                  <button id="active-donate-btn" data-value="false" class="btn btn-outline-success">Actively
+                    Donating
+                  </button>
+                </th:block>
+
+                <th:block th:unless="${user.isActivelyDonating()}">
+                  <button id="active-donate-btn" data-value="true" class="btn btn-success">Start Actively
+                    Donating
+                  </button>
+                </th:block>
               </div>
             </div>
-          </div>
 
+            <div class="card mb-4 mb-lg-0">
+              <div class="card-body p-0">
+                <h4 class="text-center pt-3">Achivements</h4>
 
-          <div class="row">
-            <div class="col-sm-6">
-              <h5 class="title text-center text-success">Procures</h5>
-
-              <th:block th:if="${procureBloods.isEmpty()}">
-                <p class="text-center text-gray">No procureBloods.</p>
-              </th:block>
-
-              <th:block th:unless="${procureBloods.isEmpty()}">
-                <th:block th:each="p : ${procureBloods}">
-                  <!-- item -->
-                  <a th:href="'/procure/success/' + ${p.getId()}" class="item_anchor_container">
-
-                    <div class="card card_position_relative">
-                      <p class="card-text card_date">
-                        <span th:text="${#dates.format(p.getDate(), 'dd-MMM-yyyy')}"></span>
-                      </p>
-
-                      <div class="card-body">
-                        <p class="list-group-item">
-                          <span class="bold" th:text="${p.getBlood_group()}"></span>
-                          <span> group, </span>
-                          <span class="bold" th:text="${p.getQuantity()}"></span>
-                          <span> units</span>
-                        </p>
-                        <p class="list-group-item text-gray">
-                          <span>Status: </span>
-                          <span class="bold">
-                            <th:block th:switch="${p.getStatus()}">
-                              <span th:case="pending" class="text-warning">Pending</span>
-                              <span th:case="completed" class="text-success">Completed</span>
-                              <span th:case="cancelled" class="text-danger">Cancelled</span>
-                              <span th:case="*" th:text="${#strings.capitalize(p.getStatus())}"></span>
-                            </th:block>
-                          </span>
-                        </p>
+                <ul class="achievements_list" th:each="ac : ${achievements}">
+                  <th:block th:switch="${ac}">
+                    <li th:case="pro-donate" class="d-flex py-2 px-0">
+                      <div class="image_badge_container">
+                        <img src="/icons/pro-donate.png" alt="" width="50" height="50">
                       </div>
-                    </div>
-                  </a>
-                  <!----------->
-                </th:block>
-              </th:block>
-            </div>
-
-            <div class="col-sm-6">
-              <h5 class="card-title text-center text-danger">Donations</h5>
-
-              <th:block th:if="${donations.isEmpty()}">
-                <p>No Donations.</p>
-              </th:block>
-
-              <th:block th:unless="${donations.isEmpty()}">
-                <th:block th:each="d : ${donations}">
-                  <!-- item -->
-                  <a th:href="'/donation/success/' + ${d.getId()}" class="item_anchor_container">
-                    <div class="card card_position_relative">
-                      <p class="card-text card_date">
-                        <span th:text="${#dates.format(d.getDate(), 'dd-MMM-yyyy')}"></span>
-                      </p>
-
-                      <div class="card-body">
-                        <p class="list-group-item">
-                          <span th:text="${d.getDonationCenter().getName()}"></span>
-                          <span>, </span>
-                          <span th:text="${d.getDonationCenter().getCity().getCity()}"></span>
-                        </p>
-                        <p class="list-group-item text-gray">
-                          <span>Status: </span>
-                          <span class="bold">
-                            <th:block th:switch="${d.getStatus()}">
-                              <span th:case="pending" class="text-warning">Pending</span>
-                              <span th:case="completed" class="text-success">Completed</span>
-                              <span th:case="cancelled" class="text-danger">Cancelled</span>
-                              <span th:case="*" th:text="${#strings.capitalize(d.getStatus())}"></span>
-                            </th:block>
-                          </span>
-                        </p>
+                      <div>
+                        <p class="bold m-0">Pro-donate</p>
+                        <small class="text-gray">Donated blood 3+ times</small>
                       </div>
-                    </div>
-                  </a>
-                  <!----------->
+                    </li>
 
-                </th:block>
-              </th:block>
+                    <li th:case="active-donor" class="d-flex py-2 px-0">
+                      <div class="image_badge_container">
+                        <img src="/icons/active-blood-donation.png" alt="" width="50" height="50">
+                      </div>
+                      <div>
+                        <p class="bold m-0">Active-Donor</p>
+                        <small class="text-gray">Ready for Donating blood on need</small>
+                      </div>
+                    </li>
 
+                  </th:block>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Full Name</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0" th:text="${user.getName()}"></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0" th:text="${user.getEmail()}"></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Phone</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0" th:text="${user.getContact()}"></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Date of Birth</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0" th:text="${#dates.format(user.getDob(), 'dd-MMM-yyyy')}"></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Address</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0" th:text="${user.getAddress()}"></p>
+                  </div>
+                </div>
+              </div>
             </div>
 
+
+            <div class="row">
+              <div class="col-sm-6">
+                <h5 class="title text-center text-success">Procures</h5>
+
+                <th:block th:if="${procureBloods.isEmpty()}">
+                  <p class="text-center text-gray">No procures yet.</p>
+                </th:block>
+
+                <th:block th:unless="${procureBloods.isEmpty()}">
+                  <th:block th:each="p : ${procureBloods}">
+                    <!-- item -->
+                    <a th:href="'/procure/success/' + ${p.getId()}" class="item_anchor_container">
+
+                      <div class="card card_position_relative">
+                        <p class="card-text card_date">
+                          <span th:text="${#dates.format(p.getDate(), 'dd-MMM-yyyy')}"></span>
+                        </p>
+
+                        <div class="card-body">
+                          <p class="list-group-item">
+                            <span class="bold" th:text="${p.getBlood_group()}"></span>
+                            <span> group, </span>
+                            <span class="bold" th:text="${p.getQuantity()}"></span>
+                            <span> units</span>
+                          </p>
+                          <p class="list-group-item text-gray">
+                            <span>Status: </span>
+                            <span class="bold">
+                              <th:block th:switch="${p.getStatus()}">
+                                <span th:case="pending" class="text-warning">Pending</span>
+                                <span th:case="completed" class="text-success">Completed</span>
+                                <span th:case="cancelled" class="text-danger">Cancelled</span>
+                                <span th:case="*" th:text="${#strings.capitalize(p.getStatus())}"></span>
+                              </th:block>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                    <!----------->
+                  </th:block>
+                </th:block>
+              </div>
+
+              <div class="col-sm-6">
+                <h5 class="card-title text-center text-danger">Donations</h5>
+
+                <th:block th:if="${donations.isEmpty()}">
+                  <p class="text-center text-gray">No Donations yet.</p>
+                </th:block>
+
+                <th:block th:unless="${donations.isEmpty()}">
+                  <th:block th:each="d : ${donations}">
+                    <!-- item -->
+                    <a th:href="'/donation/success/' + ${d.getId()}" class="item_anchor_container">
+                      <div class="card card_position_relative">
+                        <p class="card-text card_date">
+                          <span th:text="${#dates.format(d.getDate(), 'dd-MMM-yyyy')}"></span>
+                        </p>
+
+                        <div class="card-body">
+                          <p class="list-group-item">
+                            <span th:text="${d.getDonationCenter().getName()}"></span>
+                            <span>, </span>
+                            <span th:text="${d.getDonationCenter().getCity().getCity()}"></span>
+                          </p>
+                          <p class="list-group-item text-gray">
+                            <span>Status: </span>
+                            <span class="bold">
+                              <th:block th:switch="${d.getStatus()}">
+                                <span th:case="pending" class="text-warning">Pending</span>
+                                <span th:case="completed" class="text-success">Completed</span>
+                                <span th:case="cancelled" class="text-danger">Cancelled</span>
+                                <span th:case="*" th:text="${#strings.capitalize(d.getStatus())}"></span>
+                              </th:block>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                    <!----------->
+
+                  </th:block>
+                </th:block>
+
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
-  </section>
+      </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>

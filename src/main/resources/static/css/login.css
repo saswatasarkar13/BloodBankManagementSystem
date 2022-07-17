@@ -39,6 +39,10 @@ main {
   transition: all 0.4s;
 }
 
-.login_btn:hover{
-    background-color: var(--theme-green);
+.login_btn:hover {
+  background-color: var(--theme-green);
+}
+
+#successful-register-msg {
+  display: none;
 }

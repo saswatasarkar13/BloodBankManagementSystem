@@ -46,13 +46,13 @@
                         <div class="card">
                             <div class="card-body d-flex align-items-center">
                                 <div class="px-2 d-flex flex-column align-items-center justify-content-center">
-                                    <th:block th:if="${item.getDp() == null}">
+                                    <th:block th:if="${#strings.isEmpty(item.getDp())}">
                                         <img th:src="'https://avatars.dicebear.com/api/initials/' + ${#strings.replace(item.getName(), ' ', '+')} + '.svg'"
                                             alt="avatar" class="rounded-circle" width="80" height="80"
                                             style="object-fit: cover;">
                                     </th:block>
 
-                                    <th:block th:unless="${item.getDp() == null}">
+                                    <th:block th:unless="${#strings.isEmpty(item.getDp())}">
                                         <img th:src="${item.getDp()}" alt="avatar" class="rounded-circle" width="80"
                                             height="80" style="object-fit: cover;">
                                     </th:block>

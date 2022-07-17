@@ -75,3 +75,23 @@ const updateQuantityHandler = async (event) => {
 };
 
 $(".update-blood-quantity-btn").click(updateQuantityHandler);
+
+/* ----------- Donation center ------------- */
+
+const deleteCenterHandler = async (event) => {
+  try {
+    const id = event.target.getAttribute("data-id");
+
+    const response = await deleteDonationCenter({ id });
+    if (response) {
+      swal(successMsg).then(() => window.location.reload());
+      return;
+    }
+    swal(errorMsg);
+  } catch (err) {
+    console.log(err);
+    swal(errorMsg);
+  }
+};
+
+$(".delete-center-btn").click(deleteCenterHandler);

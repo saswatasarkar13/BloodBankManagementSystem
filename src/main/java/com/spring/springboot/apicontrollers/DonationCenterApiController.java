@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,19 +38,33 @@ public class DonationCenterApiController {
             System.out.println(donationCenter);
             DonationCenter dcStatus = this.donationCenterService.save(donationCenter);
             if (dcStatus == null) {
-                 map.put("success", false);
-                 return map;
-             }
+                map.put("success", false);
+                return map;
+            }
             map.put("success", true);
             return map;
 
         } catch (Exception e) {
-
             e.printStackTrace();
-            map.put("success",false);
+            map.put("success", false);
             return map;
         }
 
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public Map<String, Object> deleteDonationCenter(@PathVariable String id) {
+        HashMap<String, Object> map = new HashMap<>();
+
+        try {
+            this.donationCenterService.delete(Long.parseLong(id));
+            map.put("success", true);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            map.put("success", false);
+        }
+
+        return map;
+    }
 }

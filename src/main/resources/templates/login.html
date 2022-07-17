@@ -10,6 +10,8 @@
     <th:block th:replace="fragments/lib :: common"></th:block>
 
     <link th:href="@{/css/login.css}" rel="stylesheet">
+
+    <script th:src="@{/js/login.js}" defer></script>
 </head>
 
 <body>
@@ -26,6 +28,12 @@
                     <th:block th:if="${loginError != null}">
                         <p class="text-danger" th:text="${loginError}"></p>
                     </th:block>
+                </div>
+
+                <div id="successful-register-msg">
+                    <p class="text-success bold text-center">
+                        Your Registration is successful.
+                    </p>
                 </div>
 
                 <!-- Email input -->
