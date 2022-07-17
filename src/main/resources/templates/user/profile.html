@@ -24,13 +24,13 @@
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <th:block th:if="${#strings.setIsEmpty(user.getDp())}">
+              <th:block th:if="${user.getDp() == null}">
                 <img id="profile-photo"
                   th:src="'https://avatars.dicebear.com/api/initials/' + ${#strings.replace(user.getName(), ' ', '+')} + '.svg'"
                   alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
               </th:block>
 
-              <th:block th:unless="${#strings.setIsEmpty(user.getDp())}">
+              <th:block th:unless="${user.getDp() == null}">
                 <img id="profile-photo" th:src="${user.getDp()}" alt="avatar" class="rounded-circle" width="150"
                   height="150" style="object-fit: cover;">
               </th:block>
