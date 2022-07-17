@@ -10,7 +10,7 @@
 
   <link th:href="@{/css/profile.css}" rel="stylesheet">
 
-  <script src="/js/userRegister.js" defer></script>
+  <script src="/js/userApi.js" defer></script>
   <script src="/js/profile.js" defer></script>
 
 </head>
@@ -24,16 +24,37 @@
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img id="profile-photo" src="https://ui-avatars.com/api/?rounded=true" alt="avatar" class="rounded-circle"
-                width="150" height="150" style="object-fit: cover;">
-              <br>
-              <br>
-              <button class="btn btn-outline-primary" id="edit-photo-button">Edit Photo</button>
+              <th:block th:if="${#strings.setIsEmpty(user.getDp())}">
+                <img id="profile-photo"
+                  th:src="'https://avatars.dicebear.com/api/initials/' + ${#strings.replace(user.getName(), ' ', '+')} + '.svg'"
+                  alt="avatar" class="rounded-circle" width="150" height="150" style="object-fit: cover;">
+              </th:block>
 
+              <th:block th:unless="${#strings.setIsEmpty(user.getDp())}">
+                <img id="profile-photo" th:src="${user.getDp()}" alt="avatar" class="rounded-circle" width="150"
+                  height="150" style="object-fit: cover;">
+              </th:block>
+
+              <br><br>
+
+              <button class="btn btn-outline-primary" id="edit-photo-button">Edit Photo</button>
               <input type="file" id="edit-photo-input" hidden>
+
               <h5 class="my-3" th:text="${user.getName()}"></h5>
               <p class="text-muted mb-1" th:text="${user.getEmail()}"></p>
-              <p class="text-muted mb-4" th:text="${user.getContact()}"></p>
+              <p class="text-muted mb-2" th:text="${user.getContact()}"></p>
+
+              <th:block th:if="${user.isActivelyDonating()}">
+                <button id="active-donate-btn" data-value="false" class="btn btn-outline-success">Actively
+                  Donating
+                </button>
+              </th:block>
+
+              <th:block th:unless="${user.isActivelyDonating()}">
+                <button id="active-donate-btn" data-value="true" class="btn btn-success">Start Actively
+                  Donating
+                </button>
+              </th:block>
             </div>
           </div>
 

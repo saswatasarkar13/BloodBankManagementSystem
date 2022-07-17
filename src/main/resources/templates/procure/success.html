@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Procurement</title>
     <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <script src="/js/success.js" defer></script>
 </head>
 
 <body>
-    <div class="container success_container">
+    <div class="container success_container d-flex flex-column py-4">
         <div class="card border-success mb-3" style="max-width: 60%;">
             <div class="card-body text-success text-center">
                 <h1 class="card-title">Congratulations!</h1>
@@ -60,19 +62,22 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="card-body" style="display: flex; justify-content: center;">
-                <button id="print-btn" class="btn nav-button mx-2">
-                    <a>Print</a>
-                </button>
-                <button class="btn nav-button">
-                    <a href="/home" class="card-link">Cancel</a>
-                </button>
 
-            <button class="btn home-button">
-                <a href="/home" class="card-link">Back to Home</a>
-            </button>
+        <div id="button-container" class="d-flex flex-column justify-content-center align-items-center button_container">
+            <div class="pb-3 d-flex justify-content-center">
+                <button id="print-btn" class="btn btn-success mx-2 px-3">
+                    Print
+                </button>
+                <button id="cancel-btn" class="btn btn-outline-danger">
+                    Cancel
+                </button>
+            </div>
+
+            <a href="/home" class="btn btn-outline-info">
+                Back to Home
+            </a>
         </div>
+    </div>
 
 </body>
 

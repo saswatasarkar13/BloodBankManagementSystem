@@ -12,30 +12,29 @@ import com.spring.springboot.models.Donation;
 import com.spring.springboot.services.DonationService;
 
 @RestController
-@RequestMapping (value= "/api/donation")
+@RequestMapping(value = "/api/donation")
 public class DonationApiController {
-    
+
     @Autowired
     private DonationService donationService;
 
-    @RequestMapping (value = "/status", method = RequestMethod.PUT)
-    public Map<String, Object> setStatus (@RequestBody Map <String, String> body){
+    @RequestMapping(value = "/status", method = RequestMethod.PUT)
+    public Map<String, Object> setStatus(@RequestBody Map<String, String> body) {
+
         String dId = body.get("id");
         String dStatus = body.get("status");
-        HashMap <String, Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<>();
+
         Donation donation = this.donationService.findById(Long.parseLong(dId));
         donation.setStatus(dStatus);
+
         Donation donationBloodStatus = this.donationService.save(donation);
-        if (donationBloodStatus == null)
-        {
+        if (donationBloodStatus == null) {
             map.put("success", false);
             return map;
         }
-        else
-        {
-            map.put("success", true);
-            return map;
-        }
-
+        
+        map.put("success", true);
+        return map;
     }
 }

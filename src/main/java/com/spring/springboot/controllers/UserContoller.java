@@ -53,7 +53,7 @@ public class UserContoller {
 
         this.userService.save(user);
 
-        return "redirect:/home";
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)

@@ -13,13 +13,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.spring.springboot.helpers.FileUpload;
 
 @RestController
-@RequestMapping(value = "/api/user")
+@RequestMapping(value = "/api/file")
 public class FileUploadApiController {
 
     @Autowired
     private FileUpload fileUploadHelper;
 
-    @RequestMapping(value = "/dp", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public Map<String, Object> addProfilePicture(@RequestParam("file") MultipartFile file) {
         HashMap<String, Object> map = new HashMap<>();
         try {
