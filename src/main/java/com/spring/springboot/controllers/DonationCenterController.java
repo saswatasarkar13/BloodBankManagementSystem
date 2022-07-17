@@ -35,7 +35,7 @@ public class DonationCenterController {
         DonationCenter obj = new DonationCenter();
 
         model.addAttribute("donationCenter", obj);
-        model.addAttribute("cityList", this.donationCenterService.findAllCentres());
+        model.addAttribute("cityList", this.bloodAvailableService.getAll());
 
         return "/donationCenter/form";
     }

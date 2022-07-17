@@ -100,7 +100,7 @@ public class AdminController {
 
     @RequestMapping(value = "/user/search", method = RequestMethod.GET)
     public String searchUser(@RequestParam(required = false, name = "q") String keyword, Model model) {
-        
+
         List<BloodAvailable> blood_list = bloodAvailableService.getAll();
         model.addAttribute("blood_list", this.helpers.getList(blood_list));
 
@@ -116,5 +116,13 @@ public class AdminController {
 
             return "/user/list";
         }
+    }
+
+    @RequestMapping(value = "/city")
+    public String addNewCityHandler(Model model) {
+        List<BloodAvailable> blood_list = bloodAvailableService.getAll();
+        model.addAttribute("blood_list", this.helpers.getList(blood_list));
+
+        return "/admin/addCity";
     }
 }

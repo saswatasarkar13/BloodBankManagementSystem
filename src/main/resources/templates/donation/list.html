@@ -10,6 +10,9 @@
     <th:block th:replace="fragments/lib :: common"></th:block>
 
     <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+    <script th:src="@{/js/adminApi.js}" defer></script>
+    <script th:src="@{/js/admin.js}" defer></script>
 </head>
 
 <body>
@@ -56,8 +59,10 @@
                                 </p>
 
                                 <div>
-                                    <button class="btn btn-outline-success">Complete</button>
-                                    <button class="btn btn-outline-danger">Cancel</button>
+                                    <button data-type="donation" th:attr="data-id=${item.getId()}"
+                                        class="complete-btn btn btn-outline-success">Complete</button>
+                                    <button data-type="donation" th:attr="data-id=${item.getId()}"
+                                        class="cancel-btn btn btn-outline-danger">Cancel</button>
                                 </div>
                             </div>
                         </div>

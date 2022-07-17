@@ -17,7 +17,7 @@
             </li>
 
             <li class="hover">
-                <a href="#">Users</a>
+                <a href="/user/search">Users</a>
             </li>
 
             <li class="blood-centers-aside">
@@ -34,6 +34,12 @@
             <th:block th:if="${blood_list != null}">
                 <li class="blood-availability-aside">
                     <p class="bold mb-1">Blood Availability</p>
+
+                    <p class="small mb-1 mx-3">
+                        <i class="fa fa-plus"></i>
+                        <a href="/city" class="mx-2">Add</a>
+                    </p>
+
                     <ul th:each="c : ${blood_list.entrySet()}">
                         <li>
                             <a th:href="'/blood-availability?city=' + ${c.getKey()}" th:text="${c.getKey()}"></a>

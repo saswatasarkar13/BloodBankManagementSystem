@@ -11,10 +11,10 @@ main {
   background-color: #f2f2f2;
   padding: 1rem;
   overflow: scroll;
-  height: calc(100vh - 72px);;
+  height: calc(100vh - 72px);
 }
 
-main::-webkit-scrollbar{
+main::-webkit-scrollbar {
   display: none;
 }
 
@@ -39,7 +39,6 @@ aside > ul > .hover:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-
 aside > ul > li > a {
   padding: 0.8rem 0 0.8rem 2rem;
   display: block;
@@ -48,16 +47,16 @@ aside > ul > li > a {
   font-weight: 600;
 }
 
-.blood-centers-aside{
+.blood-centers-aside {
   padding: 0.8rem 0 0.8rem 2rem;
 }
 
-.blood-centers-aside a{
+.blood-centers-aside a {
   text-decoration: none !important;
   color: gray !important;
 }
 
-.blood-availability-aside{
+.blood-availability-aside {
   padding: 0.8rem 0 0.8rem 2rem;
 }
 
@@ -105,4 +104,26 @@ aside > ul > li > a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 15px;
+}
+
+.add_city_form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_city_form {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.new-quantity-input {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  outline: none;
 }

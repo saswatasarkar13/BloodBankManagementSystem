@@ -11,6 +11,9 @@
 
     <link th:href="@{/css/dashboard.css}" rel="stylesheet">
 
+    <script th:src="@{/js/adminApi.js}" defer></script>
+    <script th:src="@{/js/admin.js}" defer></script>
+
 </head>
 
 <body>
@@ -60,8 +63,13 @@
                                         <span class="text-danger bold" th:text="${item.getDonations().size()}"></span>
                                         <br>
                                         <span>Procures: </span>
-                                        <span class="text-success bold"
-                                            th:text="${item.getProcureBlood().size()}"></span>
+                                        <span class="text-success bold" th:text="${item.getProcureBlood().size()}">
+                                        </span>
+
+                                        <th:block th:if="${item.isActivelyDonating()}">
+                                            <br>
+                                            <span class="text-success bold">Active Donor</span>
+                                        </th:block>
                                     </p>
                                 </div>
 
@@ -92,9 +100,13 @@
                             </div>
 
                             <div class="pt-2 pb-3 d-flex justify-content-center align-items-center">
-                                <button th:if="${item.isAdmin()}" class=" btn btn-outline-danger">Remove Admin</button>
+                                <button th:attr="data-id=${item.getId()}" th:if="${item.isAdmin()}"
+                                    class="remove-admin-btn btn btn-outline-danger">Remove
+                                    Admin
+                                </button>
 
-                                <button th:unless="${item.isAdmin()}" class="btn btn-outline-success mx-2">
+                                <button th:attr="data-id=${item.getId()}" th:unless="${item.isAdmin()}"
+                                    class="make-admin-btn btn btn-outline-success mx-2">
                                     Make Admin
                                 </button>
                             </div>

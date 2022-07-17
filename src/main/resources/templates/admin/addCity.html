@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add City</title>
+
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+    <script th:src="@{/js/adminApi.js}" defer></script>
+    <script th:src="@{/js/city.js}" defer></script>
+</head>
+
+<body>
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
+    <div class="w-100 container-fluid root">
+        <div class="row">
+            <th:block th:replace="fragments/admin :: side-menu"></th:block>
+
+            <main class="col-lg-10 container d-flex flex-column">
+                <div>
+                    <h3 class="m-0">Add New City</h3>
+                    <hr class="mt-0">
+                </div>
+
+                <div class="add_city_form_container flex-grow-1">
+                    <div class="add_city_form">
+                        <div>
+                            <th:block th:if="${loginError != null}">
+                                <p class="text-danger" th:text="${loginError}"></p>
+                            </th:block>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="mb-1" for="city">City : </label>
+                            <input type="text" class="form-control" id="city" placeholder="Name of the city" required>
+                        </div>
+                        <br>
+
+                        <button class="btn btn-success" id="submit-btn">Submit</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

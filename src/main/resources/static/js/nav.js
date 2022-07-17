@@ -8,6 +8,10 @@ const checkUser = () => {
   const loginBtn = document.getElementById("login-btn");
   const logoutBtn = document.getElementById("logout-btn");
 
+  const navDonationLi = document.getElementById("nav-donation-li");
+  const navProcureLi = document.getElementById("nav-procure-li");
+  const navDashboardLi = document.getElementById("nav-dashboard-li");
+
   //  console.log({ profileBtn, registerBtn, loginBtn, logoutBtn });
 
   if (!profileBtn || !registerBtn || !loginBtn) {
@@ -22,6 +26,12 @@ const checkUser = () => {
       ? cookies.username.split("+").join(" ")
       : "Profile";
     $("#profile-btn a").text(username);
+
+    if (cookies.role === "admin") {
+      navDonationLi.style.display = "none";
+      navProcureLi.style.display = "none";
+      navDashboardLi.style.display = "block";
+    }
 
     return;
   }

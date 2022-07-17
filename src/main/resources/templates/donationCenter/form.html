@@ -24,7 +24,7 @@
                 <h3 class="m-0">Add Donation Center</h3>
                 <hr class="mt-0">
 
-                <div class="procure_form_container">
+                <div class="w-75 mx-auto mt-4">
                     <form th:action="@{/donation/center/add}" method="post" th:object="${donationCenter}">
 
                         <div>
@@ -42,11 +42,11 @@
                         <div class="form-group" style="padding: 1%; margin: 1%;">
                             <label for="city-selectbox">City : </label>
                             <select th:field="*{city}" class="form-control" id="city-selectbox" required>
-                                <option th:each="c : ${cityList}" th:value="${c.getCity().getId()}" th:text="${c.getCity().getCity()}">
+                                <option th:each="c : ${cityList}" th:value="${c.getId()}" th:text="${c.getCity()}">
                                 </option>
                             </select>
                         </div>
-
+                        <br>
                         <button type="submit" class="btn nav-button">Submit</button>
                     </form>
                 </div>

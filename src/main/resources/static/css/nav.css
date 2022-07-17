@@ -67,3 +67,7 @@ nav ul li a:hover {
 .btn-color:hover{
   background-color: var(--theme-red);
 }
+
+#nav-dashboard-li{
+  display: none;
+}

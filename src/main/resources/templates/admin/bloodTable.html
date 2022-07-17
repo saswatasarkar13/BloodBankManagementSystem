@@ -11,6 +11,9 @@
 
     <link th:href="@{/css/dashboard.css}" rel="stylesheet">
 
+    <script th:src="@{/js/adminApi.js}" defer></script>
+    <script th:src="@{/js/admin.js}" defer></script>
+
 </head>
 
 <body>
@@ -44,11 +47,14 @@
                                 <td class="py-1" th:text="${item.getValue()}"></td>
 
                                 <td class="py-1">
-                                    <input type="number" />
+                                    <input type="number" th:attr="id=${item.getKey()}" class="new-quantity-input" />
                                 </td>
 
                                 <td class="py-1">
-                                    <button class="btn btn-outline-success py-1 px-3">Update</button>
+                                    <button th:attr="data-input-id=${item.getKey()}"
+                                        class="update-blood-quantity-btn btn btn-outline-success py-1 px-3">
+                                        Update
+                                    </button>
                                 </td>
                             </tr>
 

@@ -68,8 +68,6 @@ public class AuthController {
         String email = u.getEmail();
         String password = u.getPassword();
 
-        System.out.println(email + " " + password);
-
         User user = this.userService.findUserByEmail(email);
 
         if (user == null) {
@@ -110,6 +108,9 @@ public class AuthController {
         sResponse.addCookie(cookie1);
         sResponse.addCookie(cookie2);
         sResponse.addCookie(cookie3);
+
+        if (role.equals("admin"))
+            return "redirect:/dashboard";
 
         return "redirect:/home";
     }

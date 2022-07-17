@@ -22,7 +22,7 @@ const cancelHandler = async () => {
 
   if (response) {
     swal({
-      text: "Your request is success!",
+      text: "Your request is successful!",
       icon: "success",
     }).then(() => window.location.replace(`/${arr[1]}`));
 
