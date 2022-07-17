@@ -36,7 +36,7 @@
                     <p class="bold mb-1">Blood Availability</p>
                     <ul th:each="c : ${blood_list.entrySet()}">
                         <li>
-                            <a href="#" th:text="${c.getKey()}"></a>
+                            <a th:href="'/blood-availability?city=' + ${c.getKey()}" th:text="${c.getKey()}"></a>
                         </li>
                     </ul>
                 </li>

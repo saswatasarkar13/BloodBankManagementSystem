@@ -85,7 +85,8 @@
                                 </th:block>
 
                                 <td>
-                                    <button class="btn btn-success">Edit</button>
+                                    <a th:href="'/blood-availability?city=' + ${item.getKey()}"
+                                        class="btn btn-success">Edit</a>
                                 </td>
                             </tr>
                         </tbody>

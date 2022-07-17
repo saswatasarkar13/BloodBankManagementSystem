@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Availability</title>
+
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
+    <div class="w-100 container-fluid root">
+        <div class="row">
+            <th:block th:replace="fragments/admin :: side-menu"></th:block>
+
+            <main class="col-lg-10 container">
+                <h3 class="m-0">
+                    Blood Availability -
+                    <span th:text="${city}"></span>
+                </h3>
+                <hr class="mt-0">
+
+                <div class="w-100">
+                    <table class="w-100 text-center">
+                        <thead>
+                            <th>Blood Group</th>
+                            <th>Availabile Quantity</th>
+                            <th>New Quantity</th>
+                            <th></th>
+                        </thead>
+
+                        <tbody>
+
+                            <tr th:each="item : ${list.entrySet()}">
+                                <th class="py-1" th:text="${item.getKey()}"></th>
+                                <td class="py-1" th:text="${item.getValue()}"></td>
+
+                                <td class="py-1">
+                                    <input type="number" />
+                                </td>
+
+                                <td class="py-1">
+                                    <button class="btn btn-outline-success py-1 px-3">Update</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

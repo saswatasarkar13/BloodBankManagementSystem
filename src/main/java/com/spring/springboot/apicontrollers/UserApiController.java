@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.springboot.models.User;
 import com.spring.springboot.services.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping(value = "/api/user")
