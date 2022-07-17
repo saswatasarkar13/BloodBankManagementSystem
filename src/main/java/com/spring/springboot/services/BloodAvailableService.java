@@ -20,7 +20,7 @@ public class BloodAvailableService {
         return list;
     }
 
-    public List<BloodAvailable> getAvailableCities(String city) {
+    public List<BloodAvailable> getAvailableCities() {
         List<BloodAvailable> obj = this.bloodAvaliableRepository.getAvailableCities();
 
         return obj;

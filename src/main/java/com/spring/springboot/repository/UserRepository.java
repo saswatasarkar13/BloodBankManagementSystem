@@ -19,4 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT u FROM User u WHERE u.blood_group =:b AND u.city =:c AND u.isActivelyDonating=true")
     public List<User> findByBloodGroupAndCityAndDonating(@Param("b") String blood_group, @Param("c") String city);
 
+    @Query("SELECT count(u) FROM User u WHERE u.isActivelyDonating=true")
+    public Long findActiveDonors();
 }

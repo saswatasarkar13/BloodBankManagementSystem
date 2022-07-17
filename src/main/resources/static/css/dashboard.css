@@ -1,0 +1,80 @@
+.root {
+  min-height: calc(100vh - 72px);
+  display: flex;
+}
+
+.root > .row {
+  flex-grow: 1;
+}
+
+main {
+  background-color: #f2f2f2;
+  padding: 2rem 1rem 0 1rem;
+}
+
+aside {
+  background-color: white;
+  padding: 0 !important;
+  filter: drop-shadow(0.2rem 0 0.5rem rgba(0, 0, 0, 0.1));
+}
+
+aside > ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+aside > ul > li {
+  padding: 0.8rem 0 0.8rem 2rem;
+  cursor: pointer;
+}
+
+aside > ul > li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.blood-availability-aside:hover {
+  background-color: initial;
+}
+
+aside > ul > li a {
+  text-decoration: none !important;
+  color: black !important;
+  font-weight: 600;
+}
+
+.stats .card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.blood_table_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.blood_table {
+  width: 100%;
+}
+
+.blood_table th {
+  padding: 0.2rem 1rem;
+}
+
+.blood_table td {
+  padding: 0;
+  padding: 0.2rem 1rem;
+  font-weight: bold;
+}
+
+.blood_table,
+.blood_table th,
+.blood_table td {
+  border: 1px solid black;
+  border-collapse: separate;
+  text-align: center;
+}

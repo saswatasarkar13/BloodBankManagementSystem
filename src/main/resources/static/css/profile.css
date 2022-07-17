@@ -24,10 +24,6 @@
   border: none;
 }
 
-.text-gray {
-  color: gray !important;
-}
-
 .achievements_list{
   list-style-type: none;
   margin: 0;

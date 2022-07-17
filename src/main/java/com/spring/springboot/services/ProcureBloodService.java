@@ -11,25 +11,27 @@ import com.spring.springboot.repository.ProcureBloodRepository;
 
 @Service
 public class ProcureBloodService {
-    
+
     @Autowired
     private ProcureBloodRepository procureBloodRepository;
 
-    public ProcureBlood save(ProcureBlood procureBlood){
+    public ProcureBlood save(ProcureBlood procureBlood) {
         return this.procureBloodRepository.save(procureBlood);
     }
 
-    public List<ProcureBlood> getAllByUserId(Long userId){
+    public List<ProcureBlood> getAllByUserId(Long userId) {
         return this.procureBloodRepository.findAllByUserId(userId);
     }
 
-    public ProcureBlood findById (long id)
-    {
-        Optional <ProcureBlood> procureBlood = this.procureBloodRepository.findById(id);
+    public ProcureBlood findById(long id) {
+        Optional<ProcureBlood> procureBlood = this.procureBloodRepository.findById(id);
         if (procureBlood.isPresent())
             return procureBlood.get();
+
         return null;
+    }
 
-
+    public Long getCount() {
+        return this.procureBloodRepository.count();
     }
 }

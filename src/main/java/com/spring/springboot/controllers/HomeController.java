@@ -31,16 +31,12 @@ public class HomeController {
     public String index(Model model, @CookieValue(name = "userid", defaultValue = "") String userId) {
         List<BloodAvailable> list = bloodAvailableService.getAll();
 
-        System.out.println("Cookie userId => " + userId);
         User user = null;
-
         if (!userId.equals("")) {
             user = this.userService.findById(Long.parseLong(userId));
         }
 
-        System.out.println(user);
         model.addAttribute("user", user);
-
         model.addAttribute("blood_groups", Constants.BLOOD_GROUPS);
         model.addAttribute("blood_list", this.helpers.getList(list));
 

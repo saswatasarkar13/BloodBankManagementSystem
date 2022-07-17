@@ -38,6 +38,10 @@ body main {
   background-color: yellow;
 }
 
+.text-gray {
+  color: gray !important;
+}
+
 .success_container {
   min-height: 100vh;
   display: flex;

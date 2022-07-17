@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <th:block th:replace="fragments/lib :: common"></th:block>
+
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <th:block th:replace="fragments/nav :: navbar"></th:block>
+
+    <div class="w-100 container-fluid root">
+        <div class="row">
+            <aside class="col-lg-2">
+                <ul>
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Procures</a>
+                    </li>
+                    <li>
+                        <a href="#">Donations</a>
+                    </li>
+                    <li>
+                        <a href="#">Blood Centers</a>
+                    </li>
+                    <li>
+                        <a href="#">Users</a>
+                    </li>
+
+                    <li class="blood-availability-aside">
+                        <p class="bold text-gray">Blood Availability</p>
+                        <ul th:each="c : ${blood_list.entrySet()}">
+                            <li>
+                                <a href="#" th:text="${c.getKey()}"></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="col-lg-10 container stats">
+                <div class="row">
+                    <div class="col" th:each="s : ${stats.entrySet()}">
+                        <div class="card">
+                            <div class="card-body">
+                                <th:block th:switch="${s.getKey()}">
+                                    <th:block th:case="donations">
+                                        <h5 class="card-title">Total Donations</h5>
+                                        <h2 class="text-danger" th:text="${s.getValue()}"></h2>
+                                    </th:block>
+
+                                    <th:block th:case="procures">
+                                        <h5 class="card-title">Total Procures</h5>
+                                        <h2 class="text-success" th:text="${s.getValue()}"></h2>
+                                    </th:block>
+
+                                    <th:block th:case="centers">
+                                        <h5 class="card-title">Total Centers</h5>
+                                        <h2 class="text-warning" th:text="${s.getValue()}"></h2>
+                                    </th:block>
+
+                                    <th:block th:case="activeDonors">
+                                        <h5 class="card-title">Active Donors</h5>
+                                        <h2 class="text-primary" th:text="${s.getValue()}"></h2>
+                                    </th:block>
+
+                                    <th:block th:case="*">
+                                        <h5 class="card-title" th:text="${s.getKey()}"></h5>
+                                        <h2 th:text="${s.getValue()}"></h2>
+                                    </th:block>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blood_table_container">
+                    <h2 class="text-center m-0">Availability</h2>
+                    <hr style="background-color: gray; width: 100%;">
+
+                    <table class="blood_table">
+                        <thead>
+                            <th>City &#8595; / BloodGroup &#8594;</th>
+                            <th th:each="b : ${blood_groups}">
+                                <span th:text="${b}"></span>
+                            </th>
+                            <th>Actions</th>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="item : ${blood_list.entrySet()}">
+                                <th th:text="${item.getKey()}"></th>
+
+                                <th:block th:each="mapEntry : ${item.getValue().entrySet()}">
+                                    <th:block th:with="value=${mapEntry.getValue()}">
+                                        <td th:if="${value == 0}" class="bg-red" th:text="${value}"></td>
+                                        <th:block th:unless="${value == 0}">
+                                            <td th:if="${value > 10}" class="bg-green" th:text="${value}"></td>
+                                            <td th:unless="${value > 10}" class="bg-yellow" th:text="${value}"></td>
+                                        </th:block>
+                                    </th:block>
+                                </th:block>
+
+                                <td>
+                                    <button class="btn btn-success">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

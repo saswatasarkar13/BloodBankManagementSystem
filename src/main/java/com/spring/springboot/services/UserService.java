@@ -36,4 +36,12 @@ public class UserService {
     public User findUserByEmail(String email) {
         return this.userRepository.findByEmail(email);
     }
+
+    public Long getCount() {
+        return this.userRepository.count();
+    }
+
+    public Long getActiveDonorsCount() {
+        return this.userRepository.findActiveDonors();
+    }
 }

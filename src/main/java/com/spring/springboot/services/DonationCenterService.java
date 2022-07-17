@@ -26,4 +26,8 @@ public class DonationCenterService {
         return this.donationCenterRepository.findAllByCity(city);
     }
 
+    public Long getCount() {
+        return this.donationCenterRepository.count();
+    }
+
 }

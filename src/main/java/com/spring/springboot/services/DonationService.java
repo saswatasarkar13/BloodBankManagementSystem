@@ -14,21 +14,23 @@ public class DonationService {
 
     @Autowired
     private DonationRepository donationRepository;
-    
-    public Donation save(Donation donation)
-    {
+
+    public Donation save(Donation donation) {
         return this.donationRepository.save(donation);
     }
-    
-    public Donation findById (long id)
-    {
-        Optional <Donation> donation = this.donationRepository.findById(id);
+
+    public Donation findById(long id) {
+        Optional<Donation> donation = this.donationRepository.findById(id);
         if (donation.isPresent())
             return donation.get();
         return null;
     }
 
-    public List<Donation> getAllByUserId(Long userId){
+    public List<Donation> getAllByUserId(Long userId) {
         return this.donationRepository.findAllByUserId(userId);
+    }
+
+    public Long getCount() {
+        return this.donationRepository.count();
     }
 }
