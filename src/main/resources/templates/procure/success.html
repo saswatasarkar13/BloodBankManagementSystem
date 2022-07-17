@@ -21,11 +21,17 @@
             </div>
 
             <div class="card" style="width: 100%; border: none; padding: 0.5%; font-weight: 600;">
-                <img src="/icons/icons8-blood-64.png" alt="Success tick" style="height: 7rem; margin:0 auto;">
+                <img src="/icons/external-blood-transfusion.png" alt="Success tick" style="height: 7rem; margin:0 auto;">
                 <div class="card-body">
                     <h5 class="card-title" style="font-size: 1.15rem; margin: 0;">Blood Procurement details:</h5>
                 </div>
                 <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                        <span>ID :</span>
+                        <span th:text="${data.getId()}"></span>
+                    </li>
+
                     <li class="list-group-item">
                         <span>Date :</span>
                         <span th:text="${#dates.format(data.getDate(), 'dd-MMM-yyyy')}"></span>
