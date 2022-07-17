@@ -17,10 +17,13 @@ const uploadFile = async (file) => {
   return null;
 };
 
-const updateUserDp = async (dp) => {
+const updateUserDp = async (data) => {
   const reqOptions = {
     method: "PUT",
-    body: JSON.stringify({ dp }),
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
 
   const resA = await fetch(`${API_URL}/user/dp`, reqOptions);
@@ -34,10 +37,10 @@ const updateUserDp = async (dp) => {
   }
 };
 
-const updateDonateStatus = (status) => {
+const updateDonateStatus = (data) => {
   const reqOptions = {
     method: "PUT",
-    body: JSON.stringify({ status }),
+    body: JSON.stringify(data),
   };
 
   fetch(`${API_URL}/user/active-donation-status`, reqOptions);

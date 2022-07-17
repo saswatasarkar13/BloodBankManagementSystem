@@ -14,7 +14,8 @@ const onInputChangeHandler = async (event) => {
 
   if (res) {
     profilePhoto.src = res;
-    // updateUserDp(res);
+    const cookies = getCookies();
+    updateUserDp({ dp: res, id: cookies.userid });
   }
 };
 
@@ -26,7 +27,8 @@ const activeDonateHandler = (event) => {
   const target = event.target;
   const value = target.getAttribute("data-value") === "true";
 
-  // updateDonateStatus(!value);
+  const cookies = getCookies();
+  updateDonateStatus({ status: !value, id: cookies.userid });
 
   if (value) {
     target.className = "btn btn-success";

@@ -3,6 +3,7 @@ package com.spring.springboot.apicontrollers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import com.spring.springboot.services.UserService;
 @RequestMapping(value = "/api/user")
 public class UserApiController {
 
+    @Autowired
     private UserService userService;
 
     @RequestMapping (value = "/dp", method = RequestMethod.PUT)
