@@ -72,11 +72,12 @@ public class BloodApiController {
 
             BloodAvailable ob = this.bloodAvailableService.findByCity(city);
 
-            BloodGroupAvailable obj = this.bloodGroupAvaliableService.findByCityAndBloodGroup(ob.getId(), bloodGroup);
+            BloodGroupAvailable obj = this.bloodGroupAvaliableService.findByCityAndBloodGroup(ob, bloodGroup);
 
-            System.out.println(obj);
-            obj.setQuantity(quantity);
-
+            if (obj == null)
+                obj = new BloodGroupAvailable(bloodGroup, quantity, ob);
+            else
+                obj.setQuantity(quantity);
 
             BloodGroupAvailable result = bloodGroupAvaliableService.save(obj);
 

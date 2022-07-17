@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.spring.springboot.models.BloodAvailable;
 import com.spring.springboot.models.BloodGroupAvailable;
 
 @Repository
@@ -17,6 +18,6 @@ public interface BloodGroupAvailableRepository extends JpaRepository<BloodGroupA
     public List<BloodGroupAvailable> findAllByCity(@Param("c") Long city_id);
 
     @Query("SELECT b FROM BloodGroupAvailable b WHERE b.city_id =:c AND b.blood_group =:g")
-    public Optional<BloodGroupAvailable> findByCityAndBloodGroup(@Param("c") Long city_id,
+    public Optional<BloodGroupAvailable> findByCityAndBloodGroup(@Param("c") BloodAvailable city_id,
             @Param("g") String bloodGroup);
 }

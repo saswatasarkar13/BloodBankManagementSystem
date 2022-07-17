@@ -30,7 +30,7 @@ const addCity = async (city) => {
 
 const updateBloodTable = async ({ city, bloodGroup, quantity }) => {
   const reqOptions = {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify({ city, bloodGroup, quantity }),
     headers: {
       "Content-Type": "application/json",

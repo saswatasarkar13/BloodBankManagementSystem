@@ -60,7 +60,7 @@
                 <div class="mx-3">
                     <p class="m-0">Available Centers: </p>
                     <th:block th:each="c : ${centers}">
-                        <p>
+                        <p class="mb-1">
                             <span th:text="${c.getName()} + ', '"></span>
                             <span th:text="${c.getCity().getCity()}"></span>
                         </p>
