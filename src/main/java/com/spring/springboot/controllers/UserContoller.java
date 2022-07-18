@@ -32,7 +32,7 @@ public class UserContoller {
         model.addAttribute("user", new User());
         model.addAttribute("bloodGroups", Constants.BLOOD_GROUPS);
 
-        return "/user/form";
+        return "user/form";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
@@ -41,7 +41,7 @@ public class UserContoller {
 
         model.addAttribute("users", list);
 
-        return "/user/list";
+        return "user/list";
     }
 
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
@@ -82,7 +82,7 @@ public class UserContoller {
 
             model.addAttribute("error", errMsg);
 
-            return "/user/form";
+            return "user/form";
         }
 
         return "redirect:/login?register=true";
@@ -103,7 +103,7 @@ public class UserContoller {
             model.addAttribute("procureBloods", user.getProcureBlood());
             model.addAttribute("achievements", this.achievementHelper.getAchievements(user));
 
-            return "/user/profile";
+            return "user/profile";
 
         } catch (Exception e) {
             e.printStackTrace();

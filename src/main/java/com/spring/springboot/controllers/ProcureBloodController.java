@@ -42,7 +42,7 @@ public class ProcureBloodController {
 
         model.addAttribute("bloodGroups", Constants.BLOOD_GROUPS);
         model.addAttribute("procure", obj);
-        return "/procure/form";
+        return "procure/form";
     }
 
     @RequestMapping(value = "/procure/add", method = RequestMethod.POST)
@@ -68,14 +68,14 @@ public class ProcureBloodController {
 
         if (su == null) {
             model.addAttribute("error", "The city is not serviceable");
-            return "/procure/form";
+            return "procure/form";
         }
 
         TreeMap<String, Integer> list = helper.getBloodQuantityList(su.getBlood_groups());
         int availableQuantity = list.get(pb.getBlood_group());
         if (quantity > availableQuantity) {
             model.addAttribute("error", "The requsted blood quatity is not available");
-            return "/procure/form";
+            return "procure/form";
         }
 
         pb.setStatus("pending");
@@ -88,7 +88,7 @@ public class ProcureBloodController {
 
         if (obj == null) {
             model.addAttribute("errorMessage", "Sorry, Something went wrong!");
-            return "/procure/form";
+            return "procure/form";
         }
 
         return "redirect:/procure/success/" + Long.toString(obj.getId());
@@ -108,7 +108,6 @@ public class ProcureBloodController {
         BloodAvailable ba = this.bloodAvailableService.findByCity(procureBlood.getCity());
         model.addAttribute("centers", this.donationCenterService.findAllCentresByCity(ba));
 
-        return "/procure/success";
+        return "procure/success";
     }
-
 }

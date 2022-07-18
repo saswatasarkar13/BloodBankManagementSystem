@@ -40,6 +40,6 @@ public class HomeController {
         model.addAttribute("blood_groups", Constants.BLOOD_GROUPS);
         model.addAttribute("blood_list", this.helpers.getList(list));
 
-        return "/home";
+        return "home";
     }
 }

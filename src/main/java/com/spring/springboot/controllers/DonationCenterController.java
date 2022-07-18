@@ -37,7 +37,7 @@ public class DonationCenterController {
         model.addAttribute("donationCenter", obj);
         model.addAttribute("cityList", this.bloodAvailableService.getAll());
 
-        return "/donationCenter/form";
+        return "donationCenter/form";
     }
 
     @RequestMapping(value = "/donation/center/add", method = RequestMethod.POST)
@@ -62,7 +62,7 @@ public class DonationCenterController {
             model.addAttribute("cityList", this.donationCenterService.findAllCentres());
             model.addAttribute("error", "Something went wrong!");
 
-            return "/donationCenter/form";
+            return "donationCenter/form";
         }
 
         return "redirect:/donation/center/list";
@@ -76,6 +76,6 @@ public class DonationCenterController {
 
         model.addAttribute("list", this.donationCenterService.findAllCentres());
 
-        return "/donationCenter/list";
+        return "donationCenter/list";
     }
 }

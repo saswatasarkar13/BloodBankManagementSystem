@@ -51,7 +51,7 @@ public class DonationController {
         model.addAttribute("donation", obj);
         model.addAttribute("donation_centers", centerMap);
 
-        return "/donation/form";
+        return "donation/form";
     }
 
     @RequestMapping(value = "/donation/add", method = RequestMethod.POST)
@@ -78,17 +78,17 @@ public class DonationController {
             Donation donation = this.donationService.findById(donationId);
             if (donation == null)
                 return "redirect:/donation";
-            else{
-            Date date = donation.getDate();
-            String newDate = date.toString().substring(0, 11);
-            model.addAttribute("date", newDate);
-            model.addAttribute("data", donation);
-            return "/donation/success";
+            else {
+                Date date = donation.getDate();
+                String newDate = date.toString().substring(0, 11);
+                model.addAttribute("date", newDate);
+                model.addAttribute("data", donation);
+
+                return "donation/success";
             }
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:/home";
         }
     }
-
 }

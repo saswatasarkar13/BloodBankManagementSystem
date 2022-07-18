@@ -22,11 +22,8 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
     private Encryption encryption;
-
-    AuthController() {
-        encryption = new Encryption();
-    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String goToLogin(Model model, @CookieValue(name = "userid", defaultValue = "") String userId) {
@@ -38,7 +35,7 @@ public class AuthController {
 
         model.addAttribute("user", new User());
 
-        return "/login";
+        return "login";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -72,14 +69,14 @@ public class AuthController {
 
         if (user == null) {
             model.addAttribute("loginError", "Email does not exists. Try signing up");
-            return "/login";
+            return "login";
         }
 
         boolean isPasswordCorrect = encryption.checkPassword(user.getPassword(), password);
 
         if (!isPasswordCorrect) {
             model.addAttribute("loginError", "Invalid user or password!");
-            return "/login";
+            return "login";
         }
 
         Long id = user.getId();

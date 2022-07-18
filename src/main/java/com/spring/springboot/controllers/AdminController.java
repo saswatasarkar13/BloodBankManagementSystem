@@ -58,7 +58,7 @@ public class AdminController {
 
         model.addAttribute("stats", stats);
 
-        return "/admin/dashboard";
+        return "admin/dashboard";
     }
 
     @RequestMapping(value = "/donation/list")
@@ -69,7 +69,7 @@ public class AdminController {
 
         model.addAttribute("list", this.donationService.getAllPendingDonations());
 
-        return "/donation/list";
+        return "donation/list";
     }
 
     @RequestMapping(value = "/procure/list")
@@ -80,7 +80,7 @@ public class AdminController {
 
         model.addAttribute("list", this.procureBloodService.getAllPendingDonations());
 
-        return "/procure/list";
+        return "procure/list";
     }
 
     @RequestMapping(value = "/blood-availability")
@@ -95,7 +95,7 @@ public class AdminController {
         model.addAttribute("city", obj.getCity());
         model.addAttribute("list", list);
 
-        return "/admin/bloodTable";
+        return "admin/bloodTable";
     }
 
     @RequestMapping(value = "/user/search", method = RequestMethod.GET)
@@ -105,16 +105,16 @@ public class AdminController {
         model.addAttribute("blood_list", this.helpers.getList(blood_list));
 
         if (keyword == null)
-            return "/user/list";
+            return "user/list";
 
         try {
             model.addAttribute("users", this.userService.searchUser(keyword));
-            return "/user/list";
+            return "user/list";
 
         } catch (Exception e) {
             e.printStackTrace();
 
-            return "/user/list";
+            return "user/list";
         }
     }
 
@@ -123,6 +123,6 @@ public class AdminController {
         List<BloodAvailable> blood_list = bloodAvailableService.getAll();
         model.addAttribute("blood_list", this.helpers.getList(blood_list));
 
-        return "/admin/addCity";
+        return "admin/addCity";
     }
 }
