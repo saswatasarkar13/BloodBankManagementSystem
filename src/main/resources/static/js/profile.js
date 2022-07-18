@@ -32,7 +32,7 @@ const onInputChangeHandler = async (event) => {
 
   if (res) {
     const cookies = getCookies();
-    const success = updateUserDp({ dp: encodeURI(res), id: cookies.userid });
+    const success = updateUserDp({ dp: res, id: cookies.userid });
     if (success) profilePhoto.src = res;
   }
 
