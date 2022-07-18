@@ -27,14 +27,14 @@ const onInputChangeHandler = async (event) => {
 
   if (loader) loader.style.display = "block";
 
-  // const fname = new Date() + "-" + f.name;
-  // const res = await uploadFileToFirebaseBucket(f, fname);
+  const fname = new Date() + "-" + f.name;
+  const res = await uploadFileToFirebaseBucket(f, fname);
 
-  // if (res) {
-  //   profilePhoto.src = res;
-  //   const cookies = getCookies();
-  //   updateUserDp({ dp: res, id: cookies.userid });
-  // }
+  if (res) {
+    profilePhoto.src = res;
+    const cookies = getCookies();
+    updateUserDp({ dp: res, id: cookies.userid });
+  }
 
   if (loader) loader.style.display = "none";
 };
