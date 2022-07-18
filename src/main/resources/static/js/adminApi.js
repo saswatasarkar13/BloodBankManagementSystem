@@ -52,7 +52,7 @@ const deleteDonationCenter = async ({ id }) => {
     },
   };
 
-  const resA = await fetch(`${API_URL}/donation/center`, reqOptions);
+  const resA = await fetch(`${API_URL}/donation/center/`, reqOptions);
   const response = await resA.json();
 
   return response?.success;
