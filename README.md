@@ -2,7 +2,7 @@
 
 To run go to src/main/java/.../Application.java file and right click and run
 
-We have recently deployed out project on Herouku. 
+We have recently deployed out project on Heroku. 
 Please feel free to visit the website. We would love to hear your feedback.
 Link : https://blood-bank-tmsl.herokuapp.com/
 
