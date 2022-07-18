@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,80 +8,57 @@
     <title>Terms & Conditions</title>
     <th:block th:replace="fragments/lib :: common"></th:block>
 
-    <link th:href="@{/css/profile.css}" rel="stylesheet">
-    <link th:href="@{/css/loading.css}" rel="stylesheet">
+    <link href="@{/static/css/termsCondn.css}" rel="stylesheet">
+
 </head>
 
 <body>
-    <th:block th:replace="fragments/nav :: navbar"></th:block>
-    <div class="container tnC">
-        <h1> Terms and Conditions</h1>
-        <p>
-            Website usage
-            We automatically track certain anonymous information about all our website users based on what you do on the
-            site. We use this information to analyse our users' demographics, interests, and behaviour on the site to
-            understand and serve you better. We do not use this data to identify an individual.
-            <br><br>
-            For further information about the cookies we use visit our Cookie Information page.
 
-            Passwordless authentication for NHS Give Blood App You may use passwordless authentication (eg fingerprint
-            or
-            facial recognition) to access the NHS Give Blood app Native Version (this feature is not available on the
-            Browser
-            Version).
-            <br><br>
-            Passwordless authentication is voluntary and is based on technology in your device. We do not have access to
-            or
-            control over the biometric data stored on your device. You must ensure that only your own fingerprint,
-            facial
-            data or other biometric data are stored on your device. We have the right, at any time without a separate
-            notification, to block the use of passwordless authentication on any or all devices used to access the NHS
-            Give
-            Blood app.
-            <br><br>
-            Our responsibilities
-            We are committed to maintaining the security and confidentiality of your donor record. We actively implement
-            security measures to ensure your information is safe, and audit these regularly. All our staff and anyone
-            who
-            receives information from us have a legal duty to keep information about you confidential.
-            <br><br>
-            We will not release your personal details to any third party without first seeking your consent, unless this
-            is
-            allowed for or required by law.
-            <br><br>
-            We are constantly working to ensure compliance with current data protection legislation.
+    <main class="container">
+        <div class="tnC">
+            <h1> Terms and Conditions</h1>
+            <p>
+                Website usage:
+                <br> We automatically track certain anonymous information about all our website users based on what you do on
+                the site. We use this information to analyse our users' demographics, interests, and behaviour on the site
+                to understand and serve you better. We do not use this data to identify an individual.
+                <br><br>
+                For further information about the cookies we use visit our Cookie Information page.
+    
+                Our responsibilities
+                We are committed to maintaining the security and confidentiality of your donor record. We actively
+                implement security measures to ensure your information is safe, and audit these regularly. All our staff and
+                anyone who  receives information from us have a legal duty to keep information about you confidential.
+                <br><br>
+                We will not release your personal details to any third party without first seeking your consent, unless
+                this  is  allowed for or required by law.
+                <br><br>
+                We are constantly working to ensure compliance with current data protection legislation.
 
-            Your rights
-            Data protection legislation gives you, the donor, various rights. The most important of these are as
-            follows:
-            <br><br>
-            You have the right to a copy of information we hold about you.
-            You have the right to ask for your record to be amended if you believe that it is wrong.
-            You have the right to be forgotten. You can request to be removed from the Service if you have yet to make a
-            donation or provided any medical information.
-            If you have any further questions about how we use your information, please contact our helpline 0300 123 23
-            23,
-            or by completing our contact us form
-            <br><br>
-            How to access your records
-            You can access the information we hold about you by writing to the Customer Services Team at the address
-            given
-            below. Please include as much information as possible to help us locate your records, including your full
-            name,
-            date of birth, email address and postal address, plus your Donor ID if you have it. It will also help us
-            know if
-            we are to look for recent records, or from how long ago. Please apply in writing rather than by email, so
-            that
-            we receive an original signature to compare against the records we hold.
-            <br><br>
-            Sometimes, we may have to ask for more details in order to identify you correctly and locate the information
-            you
-            are interested in. If you only want some of your record, rather than everything, then please tell us when
-            you
-            apply. Subject access is provided free of charge. You may choose whether to visit your nearest NHS Blood and
-            Transplant centre to collect your records, or to have Royal Mail Special Delivery to your home address.
-        </p>
-    </div>
+                Your rights Data protection legislation gives you, the donor, various rights. The most important of these are as
+                follows:
+                <br><br>
+                You have the right to a copy of information we hold about you.
+                You have the right to ask for your record to be amended if you believe that it is wrong.
+                You have the right to be forgotten. You can request to be removed from the Service if you have yet to
+                make a donation or provided any medical information.
+                If you have any further questions about how we use your information, please contact our helpline 0300
+                123 23 23, or by completing our contact us form
+                <br><br>
+                How to access your records
+                You can access the information we hold about you by writing to the Customer Services Team at the address
+                given below. Please include as much information as possible to help us locate your records, including
+                your full name, date of birth, email address and postal address, plus your Donor ID if you have it. It will also
+                help us know if we are to look for recent records, or from how long ago. Please apply in writing rather than by
+                email, so that we receive an original signature to compare against the records we hold.
+                <br><br>
+                Sometimes, we may have to ask for more details in order to identify you correctly and locate the
+                information you are interested in. If you only want some of your record, rather than everything, then please tell us
+                when you apply. Subject access is provided free of charge. You may choose whether to visit your nearest NHS Blood
+                and Transplant centre to collect your records, or to have Royal Mail Special Delivery to your home address.
+            </p>
+        </div>
+    </main>
 </body>
 
 </html>
