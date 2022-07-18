@@ -28,7 +28,7 @@ public class Donation implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
-    @Column(name = "status", columnDefinition = "varchar(255) default 'pending'", nullable = false)
+    @Column(name = "status")
     private String status;
 
     @ManyToOne
