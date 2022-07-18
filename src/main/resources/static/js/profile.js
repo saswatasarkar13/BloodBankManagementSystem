@@ -4,19 +4,26 @@ const editProfileInput = document.getElementById("edit-photo-input");
 
 const activeDonateBtn = document.getElementById("active-donate-btn");
 
+const loader = document.getElementById("loader");
+
 const editPhotoHandler = () => {
   editProfileInput.click();
 };
 
 const onInputChangeHandler = async (event) => {
+  if (loader) loader.style.display = "block";
+
   const f = event.target.files[0];
-  const res = await uploadFile(f);
+  const fname = new Date() + "-" + f.name;
+  const res = await uploadFileToFirebaseBucket(f, fname);
 
   if (res) {
     profilePhoto.src = res;
     const cookies = getCookies();
     updateUserDp({ dp: res, id: cookies.userid });
   }
+
+  if (loader) loader.style.display = "none";
 };
 
 editPhotoButton.addEventListener("click", editPhotoHandler);

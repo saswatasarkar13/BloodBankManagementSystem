@@ -1,21 +1,21 @@
-const uploadFile = async (file) => {
-  const formData = new FormData();
-  formData.append("file", file);
+// const uploadFile = async (file) => {
+//   const formData = new FormData();
+//   formData.append("file", file);
 
-  const reqOptions = {
-    method: "POST",
-    body: formData,
-  };
+//   const reqOptions = {
+//     method: "POST",
+//     body: formData,
+//   };
 
-  const resA = await fetch(`${API_URL}/file/upload`, reqOptions);
-  const response = await resA.json();
+//   const resA = await fetch(`${API_URL}/file/upload`, reqOptions);
+//   const response = await resA.json();
 
-  if (response?.success) {
-    return response.filepath;
-  }
+//   if (response?.success) {
+//     return response.filepath;
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
 const updateUserDp = async (data) => {
   const reqOptions = {

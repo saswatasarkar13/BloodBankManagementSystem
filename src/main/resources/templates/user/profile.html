@@ -9,6 +9,13 @@
   <th:block th:replace="fragments/lib :: common"></th:block>
 
   <link th:href="@{/css/profile.css}" rel="stylesheet">
+  <link th:href="@{/css/loading.css}" rel="stylesheet">
+
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+  <script src="/js/firebaseConfig.js" defer></script>
+  <script src="/js/fileupload.js" defer></script>
 
   <script src="/js/userApi.js" defer></script>
   <script src="/js/profile.js" defer></script>
@@ -239,6 +246,9 @@
       </div>
     </section>
   </main>
+
+  <th:block th:replace="fragments/loading :: loader"></th:block>
+
 </body>
 
 </html>

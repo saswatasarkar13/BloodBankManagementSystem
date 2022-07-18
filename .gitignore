@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+#firebase config
+/src/main/resources/static/js/firebaseConfig.js
+
+#application.properties
+/src/main/resources/application.properties
