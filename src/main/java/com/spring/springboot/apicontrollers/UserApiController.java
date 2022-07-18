@@ -94,4 +94,21 @@ public class UserApiController {
             return map;
         }
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public Map<String, Object> addNewCity(@RequestBody Map<String, String> payload) {
+        HashMap<String, Object> map = new HashMap<>();
+
+        try {
+            String id = (String) payload.get("id");
+            User user = this.userService.findById(Long.parseLong(id));
+            this.userService.delete(user);
+            map.put("success", true);
+
+        } catch (Exception e) {
+            map.put("success", false);
+        }
+
+        return map;
+    }
 }

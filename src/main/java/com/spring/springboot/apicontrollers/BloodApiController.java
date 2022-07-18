@@ -94,4 +94,21 @@ public class BloodApiController {
             return map;
         }
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public Map<String, Object> removeCity(@RequestBody Map<String, String> payload) {
+        HashMap<String, Object> map = new HashMap<>();
+
+        try {
+            String city = (String) payload.get("city");
+            BloodAvailable obj = this.bloodAvailableService.findByCity(city);
+            this.bloodAvailableService.delete(obj);
+            map.put("success", true);
+
+        } catch (Exception e) {
+            map.put("success", false);
+        }
+
+        return map;
+    }
 }

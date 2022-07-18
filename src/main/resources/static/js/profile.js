@@ -11,17 +11,30 @@ const editPhotoHandler = () => {
 };
 
 const onInputChangeHandler = async (event) => {
+  const f = event.target.files[0];
+
+  if (!f) return;
+
+  if (f.size > 1024 * 1024 * 2) {
+    // 2MB
+    swal({
+      text: "File size too large!",
+      icon: "info",
+    });
+
+    return;
+  }
+
   if (loader) loader.style.display = "block";
 
-  const f = event.target.files[0];
-  const fname = new Date() + "-" + f.name;
-  const res = await uploadFileToFirebaseBucket(f, fname);
+  // const fname = new Date() + "-" + f.name;
+  // const res = await uploadFileToFirebaseBucket(f, fname);
 
-  if (res) {
-    profilePhoto.src = res;
-    const cookies = getCookies();
-    updateUserDp({ dp: res, id: cookies.userid });
-  }
+  // if (res) {
+  //   profilePhoto.src = res;
+  //   const cookies = getCookies();
+  //   updateUserDp({ dp: res, id: cookies.userid });
+  // }
 
   if (loader) loader.style.display = "none";
 };

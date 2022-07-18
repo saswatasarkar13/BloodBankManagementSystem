@@ -35,4 +35,8 @@ public class BloodGroupAvaliableService {
 
         return null;
     }
+
+    public void delete(BloodGroupAvailable obj) {
+        this.bloodGroupAvailableRepository.delete(obj);
+    }
 }

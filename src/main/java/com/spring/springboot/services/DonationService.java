@@ -37,4 +37,8 @@ public class DonationService {
     public List<Donation> getAllPendingDonations() {
         return this.donationRepository.findAllPendingDonations();
     }
+
+    public void delete(Donation obj) {
+        this.donationRepository.delete(obj);
+    }
 }

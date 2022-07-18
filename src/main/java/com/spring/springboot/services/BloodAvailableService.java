@@ -33,4 +33,8 @@ public class BloodAvailableService {
     public BloodAvailable findByCity(String city) {
         return this.bloodAvaliableRepository.findByCity(city);
     }
+
+    public void delete(BloodAvailable obj) {
+        this.bloodAvaliableRepository.delete(obj);
+    }
 }

@@ -38,4 +38,8 @@ public class ProcureBloodService {
     public List<ProcureBlood> getAllPendingDonations() {
         return this.procureBloodRepository.findAllPendingDonations();
     }
+
+    public void delete(ProcureBlood obj) {
+        this.procureBloodRepository.delete(obj);
+    }
 }

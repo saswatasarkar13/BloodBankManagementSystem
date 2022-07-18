@@ -48,4 +48,8 @@ public class UserService {
     public List<User> searchUser(String keyword) {
         return this.userRepository.searchUser(keyword);
     }
+
+    public void delete(User user) {
+        this.userRepository.delete(user);
+    }
 }

@@ -63,4 +63,21 @@ public class DonationApiController {
             return map;
         }
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public Map<String, Object> addNewCity(@RequestBody Map<String, String> payload) {
+        HashMap<String, Object> map = new HashMap<>();
+
+        try {
+            String id = (String) payload.get("id");
+            Donation donation = this.donationService.findById(Long.parseLong(id));
+            this.donationService.delete(donation);
+            map.put("success", true);
+
+        } catch (Exception e) {
+            map.put("success", false);
+        }
+
+        return map;
+    }
 }

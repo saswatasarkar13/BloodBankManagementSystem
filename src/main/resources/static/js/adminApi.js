@@ -46,9 +46,13 @@ const updateBloodTable = async ({ city, bloodGroup, quantity }) => {
 const deleteDonationCenter = async ({ id }) => {
   const reqOptions = {
     method: "DELETE",
+    body: JSON.stringify({ id }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
 
-  const resA = await fetch(`${API_URL}/donation/center/${id}`, reqOptions);
+  const resA = await fetch(`${API_URL}/donation/center`, reqOptions);
   const response = await resA.json();
 
   return response?.success;

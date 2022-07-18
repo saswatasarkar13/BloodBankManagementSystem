@@ -65,4 +65,21 @@ public class ProcureBloodApiController {
 
         return map;
     }
+
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public Map<String, Object> addNewCity(@RequestBody Map<String, String> payload) {
+        HashMap<String, Object> map = new HashMap<>();
+
+        try {
+            String id = (String) payload.get("id");
+            ProcureBlood procureBlood = this.procureBloodService.findById(Long.parseLong(id));
+            this.procureBloodService.delete(procureBlood);
+            map.put("success", true);
+
+        } catch (Exception e) {
+            map.put("success", false);
+        }
+
+        return map;
+    }
 }

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,11 +51,12 @@ public class DonationCenterApiController {
 
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public Map<String, Object> deleteDonationCenter(@PathVariable String id) {
+    @RequestMapping(value = "/", method = RequestMethod.DELETE)
+    public Map<String, Object> deleteDonationCenter(@RequestBody Map<String, Object> payload) {
         HashMap<String, Object> map = new HashMap<>();
 
         try {
+            String id = (String) payload.get("id");
             this.donationCenterService.delete(Long.parseLong(id));
             map.put("success", true);
         } catch (Exception e) {
