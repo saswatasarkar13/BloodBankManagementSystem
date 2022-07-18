@@ -26,7 +26,7 @@ const onChangeHandler = async (event) => {
 
   if (loader) loader.style.display = "block";
 
-  const fname = new Date() + "-" + f.name;
+  const fname = Date.now() + "-" + f.name;
   const res = await uploadFileToFirebaseBucket(f, fname);
 
   if (res) {

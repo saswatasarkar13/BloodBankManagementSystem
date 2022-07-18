@@ -27,13 +27,13 @@ const onInputChangeHandler = async (event) => {
 
   if (loader) loader.style.display = "block";
 
-  const fname = new Date() + "-" + f.name;
+  const fname = Date.now() + "-" + f.name;
   const res = await uploadFileToFirebaseBucket(f, fname);
 
   if (res) {
-    profilePhoto.src = res;
     const cookies = getCookies();
-    updateUserDp({ dp: res, id: cookies.userid });
+    const success = updateUserDp({ dp: encodeURI(res), id: cookies.userid });
+    if (success) profilePhoto.src = res;
   }
 
   if (loader) loader.style.display = "none";

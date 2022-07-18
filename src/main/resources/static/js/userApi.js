@@ -34,7 +34,11 @@ const updateUserDp = async (data) => {
       text: "Sorry, Something went wrong!",
       icon: "error",
     });
+
+    return false;
   }
+
+  return true;
 };
 
 const updateDonateStatus = (data) => {
