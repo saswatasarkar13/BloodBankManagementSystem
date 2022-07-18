@@ -1,7 +1,7 @@
 package com.spring.springboot.repository;
 
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +17,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query("SELECT dn FROM Donation dn WHERE dn.status ='pending'")
     public List<Donation> findAllPendingDonations();
 
-    public Optional<Donation> findById(Long id);
+    //public Optional<Donation> findById(Long id);
 
 }

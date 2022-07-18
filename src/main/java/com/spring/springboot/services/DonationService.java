@@ -19,8 +19,9 @@ public class DonationService {
         return this.donationRepository.save(donation);
     }
 
-    public Donation findById(long id) {
+    public Donation findById(Long id) {
         Optional<Donation> donation = this.donationRepository.findById(id);
+        System.out.println(donation);
         if (donation.isPresent())
             return donation.get();
         return null;

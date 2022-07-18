@@ -35,31 +35,37 @@ public class DonationApiController {
             String dStatus = body.get("status");
 
             Donation donation = this.donationService.findById(Long.parseLong(dId));
-            donation.setStatus(dStatus);
+            if (donation != null) {
 
-            if (dStatus.equals("completed")) {
-                BloodAvailable ba = donation.getDonationCenter().getCity();
-                BloodGroupAvailable bga = this.bloodGroupAvaliableService.findByCityAndBloodGroup(ba,
-                        donation.getBlood_group());
+                donation.setStatus(dStatus);
 
-                if (bga != null) {
-                    bga.setQuantity(bga.getQuantity() + 1);
-                    this.bloodGroupAvaliableService.save(bga);
+                if (dStatus.equals("completed")) {
+                    BloodAvailable ba = donation.getDonationCenter().getCity();
+                    BloodGroupAvailable bga = this.bloodGroupAvaliableService.findByCityAndBloodGroup(ba,
+                            donation.getBlood_group());
+
+                    if (bga != null) {
+                        bga.setQuantity(bga.getQuantity() + 1);
+                        this.bloodGroupAvaliableService.save(bga);
+                    }
                 }
-            }
 
-            Donation donationBloodStatus = this.donationService.save(donation);
+                Donation donationBloodStatus = this.donationService.save(donation);
 
-            if (donationBloodStatus == null) {
+                if (donationBloodStatus == null) {
+                    map.put("success", false);
+                    return map;
+                }
+
+                map.put("success", true);
+            } else {
                 map.put("success", false);
-                return map;
+                map.put("message","Id does not exist");
             }
-
-            map.put("success", true);
             return map;
         } catch (Exception e) {
             e.printStackTrace();
-            map.put("success", true);
+            map.put("success", false);
             return map;
         }
     }
