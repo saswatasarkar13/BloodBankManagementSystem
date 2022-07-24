@@ -13,4 +13,4 @@ This website is a Blood Bank Management System where users can book slots to Don
 
 # Screnshots
 
-![homepage](../screenshots/Home.png)
+![homepage](./screenshots/Home.png)
