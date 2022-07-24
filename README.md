@@ -1,4 +1,4 @@
-# AdvJavaProject (Under Construction)
+# Blood Bank Management System
 
 To run on your local machine go to src/main/java/.../Application.java file and right click and run
 
