@@ -1,0 +1,17 @@
+services:
+  springboot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bbms_app
+    ports:
+      - ${APP_PORT}:8080
+    env_file:
+      - .env
+    restart: on-failure
+    networks:
+      - vs-network
+
+networks:
+  vs-network:
+    external: true
